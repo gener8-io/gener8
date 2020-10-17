@@ -1,11 +1,9 @@
-import React from 'react';
-import { AnalysisType } from './AnalysisTypes';
-import './App.less'
+import React from "react";
+import { AnalysisType } from "./AnalysisTypes";
+import "./App.less";
 
 function App() {
-  return (
-      <AnalysisType />
-  );
+  return <AnalysisType />;
 }
 
 export default App;
