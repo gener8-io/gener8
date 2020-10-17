@@ -23,7 +23,12 @@ const AnalysisType = ({ analysisTypes, setAnalysisTypes }) => {
         </Col>
         <Col>
           <Button
-            onClick={() => setAnalysisTypes([...analysisTypes, currentAnalysis])}
+            onClick={() =>
+              setAnalysisTypes([
+                ...analysisTypes,
+                { key: currentAnalysis, label: "" },
+              ])
+            }
           >
             Add
           </Button>
