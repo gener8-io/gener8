@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button, Row, Col, Typography } from "antd";
 import { LineChart } from "react-chartkick";
 import "chart.js";
@@ -69,13 +69,21 @@ const App = () => {
     },
   ]);
 
-
-
   useEffect(() => {
     workerInstance.addEventListener("message", (message) => {
 
-      console.log(message.data)
-    });
+		if (message.data.end)
+		{
+			setGenerated(true);
+			setGenerating(false);
+		}
+		else
+		{
+			console.log(message.data);
+			if (message.data.map)
+				setUnitPlan(message.data);
+		}
+	});
   });
 
 
