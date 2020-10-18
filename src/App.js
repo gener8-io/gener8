@@ -13,7 +13,7 @@ const { Title } = Typography;
 const App = () => {
   const workerInstance = worker();
 
-  const [chartData, setChartData] = useState({0: 0});
+  const [chartData, setChartData] = useState([]);
   const [introOpen, setIntroOpen] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [generated, setGenerated] = useState(false);
@@ -117,7 +117,7 @@ const App = () => {
       </Col>
       <Col span={15}>
         {generating || generated ? (
-          <UnitPlan constraints={constraints} unitPlan={unitPlan.geometries} />
+          <UnitPlan constraints={constraints} unitPlan={unitPlan} />
         ) : (
           <>Set some constraints, and click generate.</>
         )}

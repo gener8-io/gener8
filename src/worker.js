@@ -1433,7 +1433,7 @@ export const calculateUnitPlan = (constraints) => {
 		var improved = false;
 		for (var i = 0; i < 80; ++i) {
 			if (population_update(slns)){
-				iteration += iteration;
+
 				improved = true;
 			}
 		}
@@ -1443,6 +1443,7 @@ export const calculateUnitPlan = (constraints) => {
 		}
 		else
 		{
+			iteration += 1
 			var result = {
 				iteration,
 				geometries: grid_features(sln_evaluate(slns[0], true)),
