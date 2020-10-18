@@ -1407,13 +1407,13 @@ export const turnOff = () => {
 export const calculateUnitPlan = (constraints) => {
 	unit.w = constraints.unitX;
 	unit.h = constraints.unitY;
-	room_types["Bedroom"].weights["Bed Score"] = constraints.bedSize
-	room_types["Bedroom"].weights["Circulation Area"] = constraints.bedroomCirculationArea
-	room_types["Living"].weights.target_area = constraints.livingTargetArea
-	room_types["Closet"].weights.target_area = constraints.closetTargetArea
-	room_types["Kitchen"].weights.target_area = constraints.kitchenTargetArea
-	room_types["Bathroom"].weights["Vanity Scor"] = constraints.vanityScore
-	room_types["Bathroom"].weights["Circulation Area"] = constraints.bathroomCirculationArea
+	room_types[get_room_by_name("Bedroom")].weights["Bed Score"] = constraints.bedSize;
+	room_types[get_room_by_name("Bedroom")].weights["Circulation Area"] = constraints.bedroomCirculationArea;
+	room_types[get_room_by_name("Living")].weights.target_area = constraints.livingTargetArea;
+	room_types[get_room_by_name("Closet")].weights.target_area = constraints.closetTargetArea;
+	room_types[get_room_by_name("Kitchen")].weights.target_area = constraints.kitchenTargetArea;
+	room_types[get_room_by_name("Bathroom")].weights["Vanity Score"] = constraints.vanityScore;
+	room_types[get_room_by_name("Bathroom")].weights["Circulation Area"] = constraints.bathroomCirculationArea;
 
 	init_links()
 	link_rooms("Living", "Bedroom");
