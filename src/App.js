@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Row, Col, Typography } from "antd";
+import { Modal, Button, Row, Col, Typography } from "antd";
 import { LineChart } from "react-chartkick";
 import "chart.js";
 import Constraints from "./Constraints";
@@ -8,9 +8,12 @@ import "./App.less";
 
 import worker from "workerize-loader!./worker"; // eslint-disable-line import/no-webpack-loader-syntax
 
+const { Title } = Typography;
+
 const App = () => {
   const workerInstance = worker();
 
+  const [introOpen, setIntroOpen] = useState(true);
   const [generate, setGenerate] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [generated, setGenerated] = useState(false);
@@ -69,18 +72,26 @@ const App = () => {
     },
   ]);
 
-
-
   useEffect(() => {
     workerInstance.addEventListener("message", (message) => {
-
-      console.log(message.data)
+      console.log(message.data);
     });
   });
 
-
   return (
     <Row style={{ padding: 30 }} gutter={8}>
+      <Modal
+        title="gener8.io"
+        visible={introOpen}
+        cancelButtonProps={{ style: { display: 'none' } }}
+        onOk={() => setIntroOpen(false)}
+      >
+        <p>
+          <Title>Welcome to gener8.io</Title>
+        </p>
+        <p>Happy generating!</p>
+        <p>v1 (10/18/2020)</p>
+      </Modal>
       <Col span={6}>
         <Constraints
           generating={generating}
@@ -91,7 +102,7 @@ const App = () => {
         <Button
           loading={generating}
           onClick={() => {
-            setGenerating(true)
+            setGenerating(true);
             workerInstance.calculatePrimes(500, 1000000000);
           }}
           block
@@ -110,7 +121,7 @@ const App = () => {
         {generating || generated ? (
           <UnitPlan constraints={constraints} unitPlan={unitPlan} />
         ) : (
-          <>Start gener8</>
+          <>Set some constraints, and click generate.</>
         )}
         {/*<img
             width="1000"

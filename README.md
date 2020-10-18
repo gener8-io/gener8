@@ -1,6 +1,11 @@
 ## Gener8.io
 
-### We unit plans.
+### 1. We unit plans, to launch this project install [Node.js](https://nodejs.org/en/)
+### 2. Run the following command after installing Node.js `npm i`
+### 3. `npm start` to launch the browser.
+### 4. To learn about React visit https://reactjs.org/.
+
+___
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
