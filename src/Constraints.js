@@ -95,6 +95,15 @@ const Constraints = ({
           })
         }
       />
+      <Text>Kitchen Circulation Area: </Text>
+      <Slider
+        value={constraints.kitchenTargetArea * 100}
+        onChange={(value) =>
+          setConstraints((prevState) => {
+            return { ...prevState, kitchenTargetArea: value / 100 };
+          })
+        }
+      />
     </div>
   );
 };
