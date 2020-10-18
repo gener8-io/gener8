@@ -16,7 +16,7 @@ module.exports = {
               '@error-color' : '#f5222d', 
               '@heading-color' : 'rgba(0,0,0,0.85)', 
               '@text-color' : 'rgba(0,0,0,0.65)', 
-              '@border-radius-base' : '12px', 
+              '@border-radius-base' : '8px', 
               '@border-color-base' : '#d5d5d5', 
               '@font-size-base' : '14px',
 

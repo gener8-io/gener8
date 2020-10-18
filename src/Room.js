@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import Wall from "./Wall";
-import SvgLoader from "./SvgLoader";
 
 const WALL_THICKNESS = 10;
 
@@ -29,7 +28,7 @@ const Room = ({ label, coords }) => {
       <text
         x={coords[0].x + 60}
         y={coords[0].y + 60}
-        fill="red"
+        fill="#722ed1"
         fontSize="40"
       >
         {label}

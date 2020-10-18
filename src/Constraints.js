@@ -1,26 +1,67 @@
 import React from "react";
-import { Slider, Typography, Row, Col, Select } from "antd";
+import { Button, Slider, Typography, Row, Col, InputNumber } from "antd";
 
-const { Title } = Typography;
-const { Option } = Select;
+const { Title, Text } = Typography;
 
-const bedSizes = ["Twin", "Twin XL", "Queen", "King", "California King"];
-
-const Constraints = ({constraints, setConstaints}) => (
+const Constraints = ({ constraints, setConstraints, setGenerating }) => (
   <div>
-    <Row>
-      <Title level={3}>Constraints</Title>
-    </Row>
-    <Row>
-      <Col span={3}>Bed Size: </Col>
+    <Title level={3}>Constraints</Title>
+    <Row gutter={6}>
       <Col>
-        <Select defaultValue={constraints?.bedSize} >
-          {bedSizes.map((bz) => (
-            <Option>{bz}</Option>
-          ))}
-        </Select>
+        <Text>Unit X (in): </Text>
+      </Col>
+      <Col>
+        <InputNumber
+          defaultValue={240}
+          value={constraints.unitX}
+          onChange={(value) =>
+            setConstraints((prevState) => {
+              return { ...prevState, unitX: value };
+            })
+          }
+        />
       </Col>
     </Row>
+    <br />
+    <Row gutter={8}>
+      <Col>
+        <Text>Unit Y (in): </Text>
+      </Col>
+      <Col>
+        <InputNumber
+          defaultValue={240}
+          value={constraints.unitY}
+          onChange={(value) =>
+            setConstraints((prevState) => {
+              return { ...prevState, unitY: value };
+            })
+          }
+        />
+      </Col>
+    </Row>
+    <Text>Bed Size: </Text>
+    <Slider
+      defaultValue={50}
+      value={constraints.bedSize * 100}
+      onChange={(value) =>
+        setConstraints((prevState) => {
+          return { ...prevState, bedSize: value / 100 };
+        })
+      }
+    />
+    <Text>Bedroom Circulation Area: </Text>
+    <Slider
+      defaultValue={50}
+      value={constraints.circulation * 100}
+      onChange={(value) =>
+        setConstraints((prevState) => {
+          return { ...prevState, circulation: value / 100 };
+        })
+      }
+    />
+    <Button onClick={() => setGenerating(true)} block type="primary">
+      Generate
+    </Button>
   </div>
 );
 

@@ -1,19 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "antd";
-import AnalysisType from "./AnalysisTypes";
+import { LineChart } from "react-chartkick";
+import "chart.js";
 import Constraints from "./Constraints";
-
 import UnitPlan from "./UnitPlan";
-
 import "./App.less";
-
-const colors = {
-  Closet: "red",
-  Bedroom: "blue",
-  Bath: "green",
-  Kitchen: "yellow",
-  Living: "cyan",
-};
 
 const unitPlan = [
   {
@@ -64,31 +55,63 @@ const unitPlan = [
 ];
 
 const App = () => {
-  const [analysisTypes, setAnalysisTypes] = useState(["Bed Size"]);
+  //const appleWorker = new Worker("./worker.js");
+
+  const [generating, setGenerating] = useState(false);
   const [constraints, setConstraints] = useState({
-    bedSize: 0.5,
+    unitX: 240,
+    unitY: 320,
+    bedSize: 0.7,
     circulation: 0.5,
   });
+
+  /*useEffect(() => {
+    appleWorker.onmessage = ($event) => {
+      if ($event && $event.data) {
+        //setCountApple($event.data);
+      }
+    };
+  }, [appleWorker]);*/
+
+  useEffect(() => {
+    console.log(constraints);
+  }, [constraints]);
 
   //const computeUnitPlans = (bedSize)
 
   return (
-    <Row>
+    <Row style={{ margin: 30 }}>
       <Col span={6}>
-        <AnalysisType
-          analysisTypes={analysisTypes}
-          setAnalysisTypes={setAnalysisTypes}
-        />
-      </Col>
-      <Col span={10}>
-        <UnitPlan unitPlan={unitPlan} />
-        
-      </Col>
-      <Col span={8}>
         <Constraints
+          setGenerating={setGenerating}
           constraints={constraints}
           setConstraints={setConstraints}
         />
+        <br />
+        {generating && (
+          <Row style={{ marginTop: 80 }}>
+            <LineChart data={{ 1: 0, 2: 3, 3: 12 }} />
+          </Row>
+        )}
+      </Col>
+      <Col span={15}>
+        <UnitPlan unitPlan={unitPlan} />
+        {/*<img
+            width="1000"
+            height="1000"
+            src={`./assets/Unit Parts_CalKing_A.svg`}
+        />*/}
+      </Col>
+      <Col span={1}>
+        <Row>
+          <img
+            width="100"
+            height="100"
+            src={process.env.PUBLIC_URL + "/assets/Logo.gif"}
+            alt="logo"
+          />
+          Gener8.io
+        </Row>
       </Col>
     </Row>
   );
