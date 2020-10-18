@@ -471,13 +471,13 @@ var max_slns = 100;
 var unit = { w: 150, h: 100 };
 var links = [];
 var room_types = [
-	{name: "Bedroom", target_area: 0.2},
-	{name: "Living", target_area: 0.25},
-	{name: "Closet", target_area: 0.1},
-
-	{name: "Kitchen", target_area: 0.3},
-	{name: "Bathroom", target_area: 0.15}
-];
+	{ name: "Bedroom", weights: { bedSize: 0.2, circulation: 0.2 } },
+	{ name: "Living", weights: { target_area: 0.25 } },
+	{ name: "Closet", weights: { target_area: 0.1 } },
+  
+	{ name: "Kitchen", weights: { target_area: 0.3 } },
+	{ name: "Bathroom", weights: { VanitySize: 0.2, circulation: 0.15 } },
+  ];
 
 function init_links()
 {
