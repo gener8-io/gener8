@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Typography } from "antd";
+import { Button, Row, Col, Typography } from "antd";
 import { LineChart } from "react-chartkick";
 import "chart.js";
 import Constraints from "./Constraints";
 import UnitPlan from "./UnitPlan";
 import "./App.less";
 
-const App = () => {
-  const unitPlanWorker = new Worker("./worker.js");
+import worker from "workerize-loader!./worker"; // eslint-disable-line import/no-webpack-loader-syntax
 
-  const [counter, setCounter] = useState(1);
+const App = () => {
+  const workerInstance = worker();
+
   const [generate, setGenerate] = useState(false);
   const [generating, setGenerating] = useState(false);
   const [generated, setGenerated] = useState(false);
@@ -68,27 +69,15 @@ const App = () => {
     },
   ]);
 
-  /*useEffect(() => {
 
-    //setInterval(() => setUnitPlan(), 6000);
-  }, [generating]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setGenerating(false);
-      setGenerated(true);
-    }, 6000);
-  }, [generated]); */
+    workerInstance.addEventListener("message", (message) => {
 
-  useEffect(() => {
-    unitPlanWorker.onmessage = ($event) => {
-      if ($event && $event.data) {
-        setUnitPlan($event.data);
-      }
-    };
-  }, [unitPlanWorker]);
+      console.log(message.data)
+    });
+  });
 
-  //const computeUnitPlans = (bedSize)
 
   return (
     <Row style={{ padding: 30 }} gutter={8}>
@@ -99,8 +88,18 @@ const App = () => {
           constraints={constraints}
           setConstraints={setConstraints}
         />
+        <Button
+          loading={generating}
+          onClick={() => {
+            setGenerating(true)
+            workerInstance.calculatePrimes(500, 1000000000);
+          }}
+          block
+          type="primary"
+        >
+          Generate
+        </Button>
         <br />
-        Count: {counter}
         {generating || generated ? (
           <Row style={{ marginTop: 80 }}>
             <LineChart data={{ 1: 0, 2: 3, 3: 12 }} />

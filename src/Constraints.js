@@ -9,7 +9,6 @@ const Constraints = ({
   setGenerating,
   generating,
 }) => {
-  const unitPlanWorker = new Worker("./worker.js");
   return (
     <div>
       <Title level={3}>Constraints</Title>
@@ -66,20 +65,7 @@ const Constraints = ({
           })
         }
       />
-      <Button
-        loading={generating}
-        onClick={() => {
-          setGenerating(true);
-          unitPlanWorker.postMessage({
-            msg: "generate",
-            constraints: constraints,
-          });
-        }}
-        block
-        type="primary"
-      >
-        Generate
-      </Button>
+      
     </div>
   );
 };
