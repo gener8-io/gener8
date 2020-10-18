@@ -467,7 +467,7 @@ var templates = {
 };
 
 var intervalId;
-var max_slns = 40;
+var max_slns = 100;
 var unit = { w: 150, h: 100 };
 var links = [];
 var room_types = [
@@ -1102,7 +1102,6 @@ function room_template(rect, room_type)
 		{
 			fit.push(template);
 		}
-
 	}
 	return fit;
 }
@@ -1122,7 +1121,13 @@ function grid_point_evaluate(grid, x, y, room_type, sln, debug)
 	var lr = grid_lr(grid, room_type);
 	var room_templates = room_template(lr, room_type);
 	if (room_templates > 0)
+	{
 		sln.templates.push({rect: lr, id: room_templates[0]["Unique name"]});
+	}
+	else if (templates[room_types[room_type].name])
+	{
+		score -= 500;
+	}
 
 	if (debug)
 		console.log("templates", room_templates);
@@ -1411,7 +1416,7 @@ export const calculatePrimes = (iterations, multiplier) => {
 
 	intervalId = setInterval(function(){
 		var improved = false;
-		for (var i = 0; i < 100; ++i) {
+		for (var i = 0; i < 80; ++i) {
 			if (population_update(slns))
 				improved = true;
 		}
