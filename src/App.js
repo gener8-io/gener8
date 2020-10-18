@@ -13,7 +13,7 @@ const { Title } = Typography;
 const App = () => {
   const workerInstance = worker();
 
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState({});
   const [introOpen, setIntroOpen] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [generated, setGenerated] = useState(false);
@@ -55,7 +55,7 @@ const App = () => {
         console.log(message.data);
         if (message.data.geometries) { 
           setUnitPlan(message.data);
-          setChartData({...chartData, [message.data.iteration]: message.data.score })
+          setChartData(prevState => ({...prevState, [message.data.iteration]: message.data.score }))
         }
       }
     });
