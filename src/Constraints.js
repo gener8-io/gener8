@@ -104,6 +104,24 @@ const Constraints = ({
           })
         }
       />
+      <Text>Kitchen Granite Size: </Text>
+      <Slider
+        value={constraints.kitchenGraniteSize * 100}
+        onChange={(value) =>
+          setConstraints((prevState) => {
+            return { ...prevState, kitchenGraniteSize: value / 100 };
+          })
+        }
+      />
+      <Text>Kitchen Casework Size: </Text>
+      <Slider
+        value={constraints.kitchenCaseworkSize * 100}
+        onChange={(value) =>
+          setConstraints((prevState) => {
+            return { ...prevState, kitchenCaseworkSize: value / 100 };
+          })
+        }
+      />
     </div>
   );
 };

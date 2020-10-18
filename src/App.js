@@ -26,7 +26,9 @@ const App = () => {
     bathroomCirculationArea: 0.3,
     kitchenTargetArea: 0.1,
     closetTargetArea: 0.1,
-    livingTargetArea: 0.4
+    livingTargetArea: 0.4,
+    kitchenGraniteSize: 0.2,
+    kitchenCaseworkSize: 0.2,
   });
 
   const [unitPlan, setUnitPlan] = useState({
