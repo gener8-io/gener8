@@ -476,7 +476,7 @@ var room_types = [
 	{ name: "Living", weights: { target_area: 0.25 } },
 	{ name: "Closet", weights: { target_area: 0.1 } },
   
-	{ name: "Kitchen", weights: { "Circulation Area": 0.3, Granite: 0.2, Casework: 0.2} },
+	{ name: "Kitchen", weights: { Casework: 0.2} },
 	{ name: "Bathroom", weights: { "Vanity Score": 0.2, "Circulation Area": 0.15 } },
   ];
 
@@ -1467,8 +1467,6 @@ export const calculateUnitPlan = (constraints) => {
 	room_types[get_room_by_name("Bedroom")].weights["Circulation Area"] = constraints.bedroomCirculationArea;
 	room_types[get_room_by_name("Living")].weights.target_area = constraints.livingTargetArea;
 	room_types[get_room_by_name("Closet")].weights.target_area = constraints.closetTargetArea;
-	room_types[get_room_by_name("Kitchen")].weights["CirculationArea"] = constraints.kitchenTargetArea;
-	room_types[get_room_by_name("Kitchen")].weights.Granite = constraints.kitchenGraniteSize;
 	room_types[get_room_by_name("Kitchen")].weights.Casework = constraints.kitchenCaseworkSize;
 	room_types[get_room_by_name("Bathroom")].weights["Vanity Score"] = constraints.vanityScore;
 	room_types[get_room_by_name("Bathroom")].weights["Circulation Area"] = constraints.bathroomCirculationArea;
