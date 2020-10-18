@@ -6,54 +6,6 @@ import Constraints from "./Constraints";
 import UnitPlan from "./UnitPlan";
 import "./App.less";
 
-const unitPlan = [
-  {
-    label: "Closet",
-    coords: [
-      { x: 0, y: 0 },
-      { x: 0, y: 1000 },
-      { x: 300, y: 1000 },
-      { x: 300, y: 0 },
-    ],
-  },
-  {
-    label: "Bedroom",
-    coords: [
-      { x: 0, y: 1000 },
-      { x: 1000, y: 1000 },
-      { x: 1000, y: 2000 },
-      { x: 0, y: 2000 },
-    ],
-  },
-  {
-    label: "Bath",
-    coords: [
-      { x: 300, y: 0 },
-      { x: 300, y: 1000 },
-      { x: 1000, y: 1000 },
-      { x: 1000, y: 0 },
-    ],
-  },
-  {
-    label: "Living",
-    coords: [
-      { x: 1000, y: 1000 },
-      { x: 1000, y: 2000 },
-      { x: 2000, y: 2000 },
-      { x: 2000, y: 1000 },
-    ],
-  },
-  {
-    label: "Kitchen",
-    coords: [
-      { x: 1000, y: 0 },
-      { x: 1000, y: 1000 },
-      { x: 2000, y: 1000 },
-      { x: 2000, y: 0 },
-    ],
-  },
-];
-
 const App = () => {
   //const appleWorker = new Worker("./worker.js");
 
@@ -64,6 +16,54 @@ const App = () => {
     bedSize: 0.7,
     circulation: 0.5,
   });
+
+  const [unitPlan, setUnitPlan] = useState([
+    {
+      label: "Closet",
+      coords: [
+        { x: 0, y: 0 },
+        { x: 0, y: 100 },
+        { x: 30, y: 100 },
+        { x: 30, y: 0 },
+      ],
+    },
+    {
+      label: "Bedroom",
+      coords: [
+        { x: 0, y: 100 },
+        { x: 100, y: 100 },
+        { x: 100, y: 200 },
+        { x: 0, y: 200 },
+      ],
+    },
+    {
+      label: "Bath",
+      coords: [
+        { x: 30, y: 0 },
+        { x: 30, y: 100 },
+        { x: 100, y: 100 },
+        { x: 100, y: 0 },
+      ],
+    },
+    {
+      label: "Living",
+      coords: [
+        { x: 100, y: 100 },
+        { x: 100, y: 200 },
+        { x: 200, y: 200 },
+        { x: 200, y: 100 },
+      ],
+    },
+    {
+      label: "Kitchen",
+      coords: [
+        { x: 100, y: 0 },
+        { x: 100, y: 100 },
+        { x: 200, y: 100 },
+        { x: 200, y: 0 },
+      ],
+    },
+  ]);
 
   /*useEffect(() => {
     appleWorker.onmessage = ($event) => {
@@ -95,7 +95,11 @@ const App = () => {
         )}
       </Col>
       <Col span={15}>
-        <UnitPlan unitPlan={unitPlan} />
+        {generating ? (
+          <UnitPlan constraints={constraints} unitPlan={unitPlan} />
+        ) : (
+          <>Start gener8</>
+        )}
         {/*<img
             width="1000"
             height="1000"

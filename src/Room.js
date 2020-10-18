@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import Wall from "./Wall";
 
-const WALL_THICKNESS = 10;
+const WALL_THICKNESS = 1;
 
 const Room = ({ label, coords }) => {
   const walls = useMemo(
@@ -26,10 +26,10 @@ const Room = ({ label, coords }) => {
         />
       ))}
       <text
-        x={coords[0].x + 60}
-        y={coords[0].y + 60}
+        x={coords[0].x + 5}
+        y={coords[0].y + 8}
         fill="#722ed1"
-        fontSize="40"
+        fontSize="6"
       >
         {label}
       </text>
