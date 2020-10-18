@@ -145,7 +145,7 @@ function node_mutate(node, leaf_mutation_odds, node_mutation_odds, node_split_od
 			switch (rand_range(0, 3))
 			{
 				case 0:
-					var increment = rand_bool() ? 0.1 : -0.1;
+					var increment = rand_bool() ? 0.05 : -0.05;
 					node.cut = Math.min(Math.max(node.cut + increment, 0.1), 0.9);
 				break;
 				case 1:
@@ -358,10 +358,10 @@ function sln_mix(a, b)
 
 function sln_mutate(sln)
 {
-	var target_mutations = rand_range(0, 20);
+	var target_mutations = rand_range(0, 10);
 	var count = node_count(sln.node);
 	for (var i = 0; i < target_mutations; i++)
-		node_mutate(sln.node, 0.2, 0.1, 0.1);
+		node_mutate(sln.node, 0.2, 0.2, 0.1);
 }
 
 function grid_reserve(grid)
@@ -453,7 +453,7 @@ function grid_value(grid, y, x)
 }
 
 var g_evaluation_id = 0;
-function grid_flood_fill(grid, room_type, y, x, neighborhoods, bounds)
+function grid_flood_fill(grid, room_type, y, x, neighborhoods)
 {
 	var area = 0.0;
 	var cell = grid_value(grid, y, x);
@@ -467,39 +467,124 @@ function grid_flood_fill(grid, room_type, y, x, neighborhoods, bounds)
 		return area;
 	}
 
-	bounds.minx = Math.min(bounds.minx, x);
-	bounds.miny = Math.min(bounds.miny, y);
-	bounds.maxx = Math.max(bounds.maxx, x);
-	bounds.maxy = Math.max(bounds.maxy, y);
+	// bounds.minx = Math.min(bounds.minx, x);
+	// bounds.miny = Math.min(bounds.miny, y);
+	// bounds.maxx = Math.max(bounds.maxx, x);
+	// bounds.maxy = Math.max(bounds.maxy, y);
 
 	area += grid.widths[x] * grid.heights[y];
 
-	area += grid_flood_fill(grid, room_type, y - 1, x, neighborhoods, bounds);
-	area += grid_flood_fill(grid, room_type, y + 1, x, neighborhoods, bounds);
-	area += grid_flood_fill(grid, room_type, y, x - 1, neighborhoods, bounds);
-	area += grid_flood_fill(grid, room_type, y, x + 1, neighborhoods, bounds);
+	area += grid_flood_fill(grid, room_type, y - 1, x, neighborhoods);
+	area += grid_flood_fill(grid, room_type, y + 1, x, neighborhoods);
+	area += grid_flood_fill(grid, room_type, y, x - 1, neighborhoods);
+	area += grid_flood_fill(grid, room_type, y, x + 1, neighborhoods);
 
 	return area;
+}
+
+function grid_rect_expandable_up(grid, rect)
+{
+	var type = grid.points[y][x][0];
+	var new_col = rect.y - 1;
+	for (var x = rect.x; x < rect.x + rect.w; ++x)
+	{
+		var value = grid_value(grid, new_col, x);
+		if (value != type)
+			return false;
+	}
+	return true;
+}
+
+function grid_rect_expandable_down(grid, rect)
+{
+	var type = grid.points[y][x][0];
+	var new_col = rect.y + rect.h + 1;
+	for (var x = rect.x; x < rect.x + rect.w; ++x)
+	{
+		var value = grid_value(grid, new_col, x);
+		if (value != type)
+			return false;
+	}
+	return true;
+}
+
+function grid_rect_expandable_left(grid, rect)
+{
+	var type = grid.points[y][x][0];
+	var new_row = rect.x + 1;
+	for (var y = rect.y; h < rect.y + rect.h; ++y)
+	{
+		var value = grid_value(grid, y, new_row);
+		if (value != type)
+			return false;
+	}
+	return true;
+}
+
+function grid_lr(grid, room_type)
+{
+	var lr;
+	for (var y = 0; y < grid.heights.length; ++y)
+	{
+		for (var x = 0; x < grid.widths.length; ++x)
+		{
+			var cell = grid.points[y][x][0];
+			if (cell[0] == room_type)
+			{
+				var rect = {x:x, y:y, w:1, h:1};
+				/* If it's expandable in every direction, it's not the lr */
+				if (   grid_value(grid, y, x + 1) == room_type
+				    && grid_value(grid, y, x - 1) == room_type
+				    && grid_value(grid, y + 1, x) == room_type
+				    && grid_value(grid, y - 1, x) == room_type)
+					continue;
+
+				while (true) {
+					if (grid_rect_expandable_right(grid, rect))
+					{
+						rect.w++;
+						continue;
+					}
+					if (grid_rect_expandable_left(grid, rect))
+					{
+						rect.x--;
+						rect.w++;
+						continue;
+					}
+					if (grid_rect_expandable_up(grid, rect))
+					{
+						rect.y--;
+						rect.h++;
+						continue;
+					}
+					if (grid_rect_expandable_down(grid, rect))
+					{
+						rect.h++;
+						continue;
+					}
+					break;
+				}
+				if (!lr || lr.w * lr.h < rect.w * rect.h)
+					lr = rect;
+			}
+		}
+	}
+	return lr;
 }
 
 function grid_point_evaluate(grid, x, y, room_type, debug)
 {
 	var score = 0;
-	var bounds = {
-		minx: Infinity,
-		miny: Infinity,
-		maxx: -Infinity,
-		maxy: -Infinity
-	};
 	var neighborhoods = [];
 	for (var i = 0; i < room_types.length; ++i)
 	{
 		neighborhoods.push(false);
 	}
-	var area = grid_flood_fill(grid, room_type, y, x, neighborhoods,
-		bounds);
+	var area = grid_flood_fill(grid, room_type, y, x, neighborhoods);
 	var target_area = room_types[room_type].target_area * unit.w * unit.h;
 	score -= Math.abs(target_area - area);
+
+	grid_lr(grid, room_type);
 
 	for (var i = 0; i < room_types.length; ++i)
 	{
