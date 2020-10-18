@@ -23,69 +23,33 @@ const App = () => {
     circulation: 0.5,
   });
 
-  const [unitPlan, setUnitPlan] = useState([
-    {
-      label: "Closet",
-      coords: [
-        { x: 0, y: 0 },
-        { x: 0, y: 100 },
-        { x: 30, y: 100 },
-        { x: 30, y: 0 },
-      ],
-    },
-    {
-      label: "Bedroom",
-      coords: [
-        { x: 0, y: 100 },
-        { x: 100, y: 100 },
-        { x: 100, y: 200 },
-        { x: 0, y: 200 },
-      ],
-    },
-    {
-      label: "Bath",
-      coords: [
-        { x: 30, y: 0 },
-        { x: 30, y: 100 },
-        { x: 100, y: 100 },
-        { x: 100, y: 0 },
-      ],
-    },
-    {
-      label: "Living",
-      coords: [
-        { x: 100, y: 100 },
-        { x: 100, y: 200 },
-        { x: 200, y: 200 },
-        { x: 200, y: 100 },
-      ],
-    },
-    {
-      label: "Kitchen",
-      coords: [
-        { x: 100, y: 0 },
-        { x: 100, y: 100 },
-        { x: 200, y: 100 },
-        { x: 200, y: 0 },
-      ],
-    },
-  ]);
+  const [unitPlan, setUnitPlan] = useState({
+    geometries: [
+      {
+        label: "Unit",
+        coords: [
+          { x: 0, y: 0 },
+          { x: 0, y: constraints.unitY },
+          { x: constraints.unitX, y: constraints.unitY },
+          { x: constraints.unitX, y: 0 },
+        ],
+      },
+    ],
+    images: [],
+  });
+
+  useEffect(() => console.log(unitPlan), [unitPlan]);
 
   useEffect(() => {
     workerInstance.addEventListener("message", (message) => {
-
-		if (message.data.end)
-		{
-			setGenerated(true);
-			setGenerating(false);
-		}
-		else
-		{
-			console.log(message.data);
-			if (message.data.map)
-				setUnitPlan(message.data);
-		}
-	});
+      if (message.data.end) {
+        setGenerated(true);
+        setGenerating(false);
+      } else {
+        console.log(message.data);
+        if (message.data.geometries) setUnitPlan(message.data);
+      }
+    });
   });
 
   return (
@@ -93,7 +57,7 @@ const App = () => {
       <Modal
         title="gener8.io"
         visible={introOpen}
-        cancelButtonProps={{ style: { display: 'none' } }}
+        cancelButtonProps={{ style: { display: "none" } }}
         onOk={() => setIntroOpen(false)}
       >
         <p>
@@ -129,7 +93,7 @@ const App = () => {
       </Col>
       <Col span={15}>
         {generating || generated ? (
-          <UnitPlan constraints={constraints} unitPlan={unitPlan} />
+          <UnitPlan constraints={constraints} unitPlan={unitPlan.geometries} />
         ) : (
           <>Set some constraints, and click generate.</>
         )}
