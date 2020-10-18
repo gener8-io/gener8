@@ -1379,7 +1379,7 @@ export const calculatePrimes = (iterations, multiplier) => {
 			var result = {
 				geometries: grid_features(sln_evaluate(slns[0], true)),
 				images: slns[0].templates,
-				score: slns[0].score,
+				score: slns[0].fitness,
 			};
 			time_since_last_improvement = 0;
 			postMessage(result);
