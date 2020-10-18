@@ -466,6 +466,7 @@ var templates = {
   ]
 };
 
+var intervalId;
 var max_slns = 40;
 var unit = { w: 150, h: 100 };
 var links = [];
@@ -1354,6 +1355,10 @@ function grid_features(grid)
 	return features;
 }
 
+export const turnOff = () => {
+	clearInterval(intervalId);
+}
+
 export const calculatePrimes = (iterations, multiplier) => {
 	init_links()
 	link_rooms("Living", "Bedroom");
@@ -1364,7 +1369,7 @@ export const calculatePrimes = (iterations, multiplier) => {
 	var slns = population_random();
 	var time_since_last_improvement = 0;
 
-	var id = setInterval(function(){
+	intervalId = setInterval(function(){
 		var improved = false;
 		for (var i = 0; i < 100; ++i) {
 			if (population_update(slns))
@@ -1388,7 +1393,7 @@ export const calculatePrimes = (iterations, multiplier) => {
 		{
 			console.log("ending");
 			postMessage({end:true});
-			clearInterval(id);
+			clearInterval(intervalId);
 		}
 	}, 500);
 }
