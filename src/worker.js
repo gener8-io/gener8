@@ -466,6 +466,7 @@ var templates = {
   ]
 };
 
+var iteration = 1;
 var intervalId;
 var max_slns = 100;
 var unit = { w: 150, h: 100 };
@@ -1431,8 +1432,10 @@ export const calculateUnitPlan = (constraints) => {
 	intervalId = setInterval(function(){
 		var improved = false;
 		for (var i = 0; i < 80; ++i) {
-			if (population_update(slns))
+			if (population_update(slns)){
+				iteration += iteration;
 				improved = true;
+			}
 		}
 		if (!improved)
 		{
@@ -1441,6 +1444,7 @@ export const calculateUnitPlan = (constraints) => {
 		else
 		{
 			var result = {
+				iteration,
 				geometries: grid_features(sln_evaluate(slns[0], true)),
 				images: slns[0].templates,
 				score: slns[0].fitness,

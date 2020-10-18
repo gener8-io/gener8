@@ -13,6 +13,7 @@ const { Title } = Typography;
 const App = () => {
   const workerInstance = worker();
 
+  const [chartData, setChartData] = useState({0: 0});
   const [introOpen, setIntroOpen] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [generated, setGenerated] = useState(false);
@@ -43,7 +44,7 @@ const App = () => {
     images: [],
   });
 
-  useEffect(() => console.log(unitPlan), [unitPlan]);
+  useEffect(() => console.log(unitPlan, chartData), [unitPlan, chartData]);
 
   useEffect(() => {
     workerInstance.addEventListener("message", (message) => {
@@ -52,7 +53,10 @@ const App = () => {
         setGenerating(false);
       } else {
         console.log(message.data);
-        if (message.data.geometries) setUnitPlan(message.data);
+        if (message.data.geometries) { 
+          setUnitPlan(message.data);
+          setChartData({...chartData, [message.data.iteration]: message.data.score })
+        }
       }
     });
   });
@@ -107,7 +111,7 @@ const App = () => {
         <br />
         {generating || generated ? (
           <Row style={{ marginTop: 80 }}>
-            <LineChart data={{ 1: 0, 2: 3, 3: 12 }} />
+            <LineChart data={chartData} />
           </Row>
         ) : null}
       </Col>
