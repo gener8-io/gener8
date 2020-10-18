@@ -1,13 +1,11 @@
 import React from "react";
-import { Button, Slider, Typography, Row, Col, InputNumber } from "antd";
+import { Slider, Typography, Row, Col, InputNumber } from "antd";
 
 const { Title, Text } = Typography;
 
 const Constraints = ({
   constraints,
-  setConstraints,
-  setGenerating,
-  generating,
+  setConstraints
 }) => {
   return (
     <div>
@@ -65,7 +63,6 @@ const Constraints = ({
           })
         }
       />
-      
     </div>
   );
 };

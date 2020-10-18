@@ -14,9 +14,8 @@ const App = () => {
   const workerInstance = worker();
 
   const [introOpen, setIntroOpen] = useState(true);
-  const [generate, setGenerate] = useState(false);
   const [generating, setGenerating] = useState(false);
-  const [generated, setGenerated] = useState(false);
+  const [generated] = useState(false);
   const [constraints, setConstraints] = useState({
     unitX: 240,
     unitY: 320,
