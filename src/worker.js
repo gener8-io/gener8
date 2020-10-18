@@ -1115,7 +1115,11 @@ function grid_point_evaluate(grid, x, y, room_type, sln, debug)
 		neighborhoods.push(false);
 	}
 	var area = grid_flood_fill(grid, room_type, y, x, neighborhoods);
-	var target_area = room_types[room_type].target_area * unit.w * unit.h;
+	var target_area = 0;
+	if (!room_types[room_type].target_area)
+		target_area = (unit.w * unit.h) / room_types.length;
+	else 
+		target_area = room_types[room_type].target_area * unit.w * unit.h;
 	score -= Math.abs(target_area - area);
 
 	var lr = grid_lr(grid, room_type);
