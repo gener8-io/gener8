@@ -5,13 +5,29 @@ import Room from "./Room";
 const { Title } = Typography;
 
 const UnitPlan = ({ unitPlan, constraints }) => {
-  const scale = constraints.unitY / window.innerHeight;
+  const scale = (window.innerHeight - 200.) / constraints.unitY;
+	const offset_x = 90;
+	const offset_y = 90;
 
   return (
     <div>
       <Title level={3}>Unit Plan</Title>
-      <svg
-        viewBox={`-10 -10 ${constraints.unitX} ${constraints.unitY}`}
+	  <div style={{
+		  position:"relative",
+		  width:Math.round(scale * constraints.unitX)+"px",
+		  height:Math.round(scale * constraints.unitY)+"px"
+	  }}>
+	  <svg 
+		  viewBox={`0 0 ${constraints.unitX} ${constraints.unitY}`}
+		  style={
+			  {
+				  position:"absolute",
+				  left:offset_x+"px",
+				  top:offset_y+"px",
+				  width:Math.round(scale * constraints.unitX)+"px",
+				  height:Math.round(scale * constraints.unitY)+"px"
+			  }
+	  }
       >
         
         {unitPlan.geometries.map((r) => (
@@ -21,8 +37,19 @@ const UnitPlan = ({ unitPlan, constraints }) => {
         ))}
       </svg>
       {unitPlan.images.map((i) => (
-          <img src={`./assets/Unit Parts_${i.id}.svg`} />
+          <img
+		  viewBox={`0 0 ${i.rect.w} ${i.rect.h}`}
+		  style={
+			  {
+				  position:"absolute",
+				  left:offset_x + Math.round(scale * i.rect.x - Math.round(scale * i.rect.w))+"px",
+				  top:offset_y + Math.round(scale * i.rect.y - Math.round(scale * i.rect.h))+"px",
+				  width:Math.round(scale * i.rect.w * 0.5)+"px",
+				  height:Math.round(scale * i.rect.h * 0.5)+"px"
+			  }
+		  } src={`./assets/Unit Parts_${i.id}.svg`} />
         ))}
+    </div>
     </div>
   );
 };
