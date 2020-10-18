@@ -1145,7 +1145,7 @@ function grid_point_evaluate(grid, x, y, room_type, sln, debug)
 	if (room_types[room_type].weights.target_area)
 	{
 		var target_area = room_types[room_type].weights.target_area * unit.w * unit.h;
-		score -= Math.abs(target_area - area);
+		score -= Math.abs(target_area - area) * 10.0;
 	} else {
 		var lr = grid_lr(grid, room_type);
 		var temp = room_template(lr, room_type);
@@ -1465,7 +1465,7 @@ export const calculateUnitPlan = (constraints) => {
 		}
 		if (!improved)
 		{
-			time_since_last_improvement += 100;
+			time_since_last_improvement += 30;
 		}
 		else
 		{
@@ -1484,5 +1484,5 @@ export const calculateUnitPlan = (constraints) => {
 			postMessage({end:true});
 			clearInterval(intervalId);
 		}
-	}, 100);
+	}, 30);
 }
