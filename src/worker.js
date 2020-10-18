@@ -1,3 +1,4 @@
+var templates;
 var max_slns = 40;
 var unit = { w: 150, h: 100 };
 var links = [];
@@ -524,6 +525,7 @@ function grid_rect_expandable_left(grid, rect)
 function grid_lr(grid, room_type)
 {
 	var lr;
+	var lr_real = {w: 0, h: 0};
 	for (var y = 0; y < grid.heights.length; ++y)
 	{
 		for (var x = 0; x < grid.widths.length; ++x)
@@ -564,15 +566,40 @@ function grid_lr(grid, room_type)
 					}
 					break;
 				}
-				if (!lr || lr.w * lr.h < rect.w * rect.h)
+				var rect_real = grid_rect(grid, rect);
+				if (!lr || lr_real.w * lr_real.h < rect_real.w * rect_real.h)
+				{
 					lr = rect;
+					lr_real = rect_real;
+				}
 			}
 		}
 	}
-	return lr;
+
+	return lr_real;
 }
 
-function grid_point_evaluate(grid, x, y, room_type, debug)
+function room_template(rect, room_type)
+{
+	if (!templates[room_types[room_type].name])
+		console.error(room_name, templates);
+	var room_templates = templates[room_types[room_type].name][0];
+	var fit = [];
+
+	for (var t in room_templates)
+	{
+		var template = room_templates[t];
+		if (   template.Width <= rect.w
+		    && template.Height <= rect.h)
+		{
+			fit.push(template);
+		}
+
+	}
+	return fit;
+}
+
+function grid_point_evaluate(grid, x, y, room_type, sln, debug)
 {
 	var score = 0;
 	var neighborhoods = [];
@@ -584,7 +611,13 @@ function grid_point_evaluate(grid, x, y, room_type, debug)
 	var target_area = room_types[room_type].target_area * unit.w * unit.h;
 	score -= Math.abs(target_area - area);
 
-	grid_lr(grid, room_type);
+	var lr = grid_lr(grid, room_type);
+	var room_templates = room_template(lr, room_type);
+	if (room_templates > 0)
+		sln.templates.push({lr, room_templates[0]["Unique name"]});
+
+	if (debug)
+		console.log("templates", room_templates);
 
 	for (var i = 0; i < room_types.length; ++i)
 	{
@@ -602,7 +635,7 @@ function grid_point_evaluate(grid, x, y, room_type, debug)
 	return score;
 }
 
-function room_evaluate(grid, room_type, debug)
+function room_evaluate(grid, room_type, sln, debug)
 {
 	var score = 0.0;
 	var count = 0;
@@ -617,7 +650,7 @@ function room_evaluate(grid, room_type, debug)
 				count++;
 				if (count == 1)
 				{
-					score += grid_point_evaluate(grid, x, y, room_type, debug);
+					score += grid_point_evaluate(grid, x, y, room_type, sln, debug);
 				}
 				if (count > 1)
 					break;
@@ -638,7 +671,7 @@ function room_evaluate(grid, room_type, debug)
 
 function sln_evaluate(sln, debug)
 {
-	var areas = [];
+	sln.templates = [];
 	var grid = { widths: [unit.w], heights: [unit.h]};
 	node_to_grid(sln.node, grid, 0, 0, unit.w, unit.h);
 	if (grid_check(grid))
@@ -653,7 +686,7 @@ function sln_evaluate(sln, debug)
 	var score = 0.0;
 	for (var room_type in room_types)
 	{
-		score += room_evaluate(grid, room_type, debug);
+		score += room_evaluate(grid, room_type, sln, debug);
 		g_evaluation_id++;
 	}
 
@@ -876,7 +909,10 @@ export const calculatePrimes = (iterations, multiplier) => {
 		}
 		else
 		{
-			var result = grid_features(sln_evaluate(slns[0], true));
+			var result = {
+				geometries: grid_features(sln_evaluate(slns[0], true)),
+				images: slns[0].templates
+			};
 			time_since_last_improvement = 0;
 			postMessage(result);
 		}
