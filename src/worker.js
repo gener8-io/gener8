@@ -1088,6 +1088,32 @@ function grid_lr(grid, room_type)
 	return lr_real;
 }
 
+function room_optimal_area(room_type)
+{
+	var room_templates = templates[room_types[room_type].name];
+	var best_score = 0;
+	var best_temp;
+	for (var t in room_templates)
+	{
+		var template = room_templates[t];
+		var score = 0;
+		for (var w in room_types[room_type].weights)
+		{
+			if (w == "target_area")
+				continue;
+			var w0 = room_types[room_type].weights[w];
+			var w1 = template[w];
+			score += w1 * w0;
+		}
+		if (score > best_score)
+		{
+			best_score = score;
+			best_temp = t;
+		}
+	}
+	return room_templates[best_temp].Width * room_templates[best_temp].Height;
+}
+
 function room_template(rect, room_type)
 {
 	var fit = [];
@@ -1104,7 +1130,30 @@ function room_template(rect, room_type)
 			fit.push(template);
 		}
 	}
-	return fit;
+
+	if (fit.length > 0)
+	{
+		var best_score = 0;
+		var closest_temp = 0;
+		for (var t in fit)
+		{
+			var template = fit[t];
+			var score = 0;
+			for (var w in room_types[room_type].weights)
+			{
+				var w0 = room_types[room_type].weights[w];
+				var w1 = template[w];
+				score += w1 * w0;
+			}
+			if (score > best_score)
+			{
+				best_score = score;
+				closest_temp = t;
+			}
+		}
+		return { temp: fit[closest_temp], score: best_score};
+	}
+	return null;
 }
 
 function grid_point_evaluate(grid, x, y, room_type, sln, debug)
@@ -1116,26 +1165,32 @@ function grid_point_evaluate(grid, x, y, room_type, sln, debug)
 		neighborhoods.push(false);
 	}
 	var area = grid_flood_fill(grid, room_type, y, x, neighborhoods);
-	var target_area = 0;
-	if (!room_types[room_type].target_area)
-		target_area = (unit.w * unit.h) / room_types.length;
-	else 
-		target_area = room_types[room_type].target_area * unit.w * unit.h;
-	score -= Math.abs(target_area - area);
 
-	var lr = grid_lr(grid, room_type);
-	var room_templates = room_template(lr, room_type);
-	if (room_templates.length > 0)
+	var target_area;
+	if (room_types[room_type].weights.target_area)
 	{
-		sln.templates.push({rect: lr, id: room_templates[0]["Unique Name"]});
+		target_area = room_types[room_type].weights.target_area * unit.w * unit.h;
 	}
-	else if (templates[room_types[room_type].name])
+	else
 	{
-		score -= 100;
+		target_area = room_optimal_area(room_type);
+
+		var lr = grid_lr(grid, room_type);
+		var temp = room_template(lr, room_type);
+		if (temp)
+		{
+			sln.templates.push({rect: lr, id: temp.temp["Unique Name"]});
+			score += temp.score;
+		}
+		else if (templates[room_types[room_type].name])
+		{
+			score -= 100;
+		}
 	}
+	score -= Math.abs(target_area - area) / 5.0;
 
 	if (debug)
-		console.log("templates", room_templates);
+		console.log("templates", temp);
 
 	for (var i = 0; i < room_types.length; ++i)
 	{
@@ -1439,7 +1494,7 @@ export const calculateUnitPlan = (constraints) => {
 		}
 		if (!improved)
 		{
-			time_since_last_improvement += 100;
+			time_since_last_improvement += 30;
 		}
 		else
 		{
@@ -1459,5 +1514,5 @@ export const calculateUnitPlan = (constraints) => {
 			postMessage({end:true});
 			clearInterval(intervalId);
 		}
-	}, 100);
+	}, 30);
 }
