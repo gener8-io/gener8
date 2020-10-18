@@ -29,7 +29,6 @@ const UnitPlan = ({ unitPlan, constraints }) => {
 			  }
 	  }
       >
-        
         {unitPlan.geometries.map((r) => (
           <Fragment key={r.label}>
             <Room key={r.label} {...r} />
@@ -37,34 +36,34 @@ const UnitPlan = ({ unitPlan, constraints }) => {
         ))}
       </svg>
       {unitPlan.images.map((i) => (
-          <div
+          <img
+		  viewBox={`0 0 ${i.rect.w} ${i.rect.h}`}
+		  width = {Math.round(scale * i.rect.w)}
+		  height = {Math.round(scale * i.rect.h)}
 		  style={
 			  {
 				  position:"absolute",
-				  "background-color":"rgba(0, 1, 0, 0.4)",
 				  left:offset_x + Math.round(scale * i.rect.x)+"px",
-				  top:offset_y + Math.round(scale * i.rect.y)+"px",
-				  width:Math.round(scale * i.rect.w)+"px",
-				  height:Math.round(scale * i.rect.h)+"px"
+				  top:offset_y + Math.round(scale * i.rect.y)+"px"
 			  }
-		  } ></div>
+		  } src={`./assets/Unit Parts_${i.id}.svg`} />
         ))}
     </div>
     </div>
   );
 };
       // {unitPlan.images.map((i) => (
-      //     <img
-		  // viewBox={`0 0 ${i.rect.w} ${i.rect.h}`}
-		  // width = {Math.round(scale * i.rect.w)}
-		  // height = {Math.round(scale * i.rect.h)}
+      //     <div
 		  // style={
 			  // {
 				  // position:"absolute",
+				  // "background-color":"rgba(0, 1, 0, 0.4)",
 				  // left:offset_x + Math.round(scale * i.rect.x)+"px",
-				  // top:offset_y + Math.round(scale * i.rect.y)+"px"
+				  // top:offset_y + Math.round(scale * i.rect.y)+"px",
+				  // width:Math.round(scale * i.rect.w)+"px",
+				  // height:Math.round(scale * i.rect.h)+"px"
 			  // }
-		  // } src={`./assets/Unit Parts_${i.id}.svg`} />
+		  // } ></div>
       //   ))}
 
 export default UnitPlan;
