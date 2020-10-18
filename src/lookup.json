@@ -4,57 +4,321 @@
       "Unique Name": "K66204",
       "Width": 66,
       "Height": 204,
-      "Casework": 78,
-      "DW": false
+      "DW": "FALSE",
+      "Granite": 0,
+      "Casework": 78
     },
     {
       "Unique Name": "K66192",
       "Width": 66,
       "Height": 192,
-      "Casework": 66,
-      "DW": false
+      "DW": "FALSE",
+      "Granite": 0,
+      "Casework": 66
     },
     {
       "Unique Name": "K66180",
       "Width": 66,
       "Height": 180,
-      "Casework": 48,
-      "DW": true
+      "DW": "TRUE",
+      "Granite": 0,
+      "Casework": 48
     },
     {
       "Unique Name": "K66168",
       "Width": 66,
       "Height": 168,
-      "Casework": 42,
-      "DW": true
+      "DW": "TRUE",
+      "Granite": 0,
+      "Casework": 42
     },
     {
       "Unique Name": "K66156",
       "Width": 66,
       "Height": 156,
-      "Casework": 27,
-      "DW": true
+      "DW": "TRUE",
+      "Granite": 0,
+      "Casework": 27
     },
     {
       "Unique Name": "K66144",
       "Width": 66,
       "Height": 144,
-      "Casework": 15,
-      "DW": true
+      "DW": "TRUE",
+      "Granite": 0,
+      "Casework": 15
     },
     {
       "Unique Name": "K66141",
       "Width": 66,
       "Height": 141,
-      "Casework": 36,
-      "DW": true
+      "DW": "TRUE",
+      "Granite": 0,
+      "Casework": 36
     },
     {
       "Unique Name": "K66129",
       "Width": 66,
       "Height": 129,
-      "Casework": 24,
-      "DW": true
+      "DW": "TRUE",
+      "Granite": 0,
+      "Casework": 24
+    },
+    {
+      "Unique Name": "K105204",
+      "Width": 105,
+      "Height": 204,
+      "DW": "FALSE",
+      "Granite": 21.5,
+      "Casework": 276
+    },
+    {
+      "Unique Name": "K105192",
+      "Width": 105,
+      "Height": 192,
+      "DW": "FALSE",
+      "Granite": 19.5,
+      "Casework": 252
+    },
+    {
+      "Unique Name": "K105180",
+      "Width": 105,
+      "Height": 180,
+      "DW": "TRUE",
+      "Granite": 17.88,
+      "Casework": 222
+    },
+    {
+      "Unique Name": "K105168",
+      "Width": 105,
+      "Height": 168,
+      "DW": "TRUE",
+      "Granite": 17.35,
+      "Casework": 204
+    },
+    {
+      "Unique Name": "K105156",
+      "Width": 105,
+      "Height": 156,
+      "DW": "TRUE",
+      "Granite": 15.25,
+      "Casework": 177
+    },
+    {
+      "Unique Name": "K105144",
+      "Width": 105,
+      "Height": 144,
+      "DW": "TRUE",
+      "Granite": 18.41,
+      "Casework": 153
+    },
+    {
+      "Unique Name": "K105141",
+      "Width": 105,
+      "Height": 141,
+      "DW": "TRUE",
+      "Granite": 17.88,
+      "Casework": 171
+    },
+    {
+      "Unique Name": "K105129",
+      "Width": 105,
+      "Height": 129,
+      "DW": "TRUE",
+      "Granite": 15.78,
+      "Casework": 147
+    },
+    {
+      "Unique Name": "K180204",
+      "Width": 180,
+      "Height": 204,
+      "DW": "FALSE",
+      "Granite": 66.5,
+      "Casework": 276
+    },
+    {
+      "Unique Name": "K180192",
+      "Width": 180,
+      "Height": 192,
+      "DW": "FALSE",
+      "Granite": 61.5,
+      "Casework": 252
+    },
+    {
+      "Unique Name": "K180180",
+      "Width": 180,
+      "Height": 180,
+      "DW": "TRUE",
+      "Granite": 56.38,
+      "Casework": 222
+    },
+    {
+      "Unique Name": "K180168",
+      "Width": 180,
+      "Height": 168,
+      "DW": "TRUE",
+      "Granite": 52.6,
+      "Casework": 204
+    },
+    {
+      "Unique Name": "K180156",
+      "Width": 180,
+      "Height": 156,
+      "DW": "TRUE",
+      "Granite": 47.33,
+      "Casework": 177
+    },
+    {
+      "Unique Name": "K180144",
+      "Width": 180,
+      "Height": 144,
+      "DW": "TRUE",
+      "Granite": 47.28,
+      "Casework": 153
+    },
+    {
+      "Unique Name": "K180141",
+      "Width": 180,
+      "Height": 141,
+      "DW": "TRUE",
+      "Granite": 45.95,
+      "Casework": 171
+    },
+    {
+      "Unique Name": "K180129",
+      "Width": 180,
+      "Height": 129,
+      "DW": "TRUE",
+      "Granite": 40.64,
+      "Casework": 147
+    },
+    {
+      "Unique Name": "K192204",
+      "Width": 192,
+      "Height": 204,
+      "DW": "FALSE",
+      "Granite": 80.5,
+      "Casework": 276
+    },
+    {
+      "Unique Name": "K192192",
+      "Width": 192,
+      "Height": 192,
+      "DW": "FALSE",
+      "Granite": 74.5,
+      "Casework": 252
+    },
+    {
+      "Unique Name": "K192180",
+      "Width": 192,
+      "Height": 180,
+      "DW": "TRUE",
+      "Granite": 68.38,
+      "Casework": 222
+    },
+    {
+      "Unique Name": "K192168",
+      "Width": 192,
+      "Height": 168,
+      "DW": "TRUE",
+      "Granite": 63.64,
+      "Casework": 204
+    },
+    {
+      "Unique Name": "K192156",
+      "Width": 192,
+      "Height": 156,
+      "DW": "TRUE",
+      "Granite": 57.33,
+      "Casework": 177
+    },
+    {
+      "Unique Name": "K192144",
+      "Width": 192,
+      "Height": 144,
+      "DW": "TRUE",
+      "Granite": 56.285,
+      "Casework": 153
+    },
+    {
+      "Unique Name": "K192141",
+      "Width": 192,
+      "Height": 141,
+      "DW": "TRUE",
+      "Granite": 54.7,
+      "Casework": 171
+    },
+    {
+      "Unique Name": "K192129",
+      "Width": 192,
+      "Height": 129,
+      "DW": "TRUE",
+      "Granite": 48.39,
+      "Casework": 147
+    },
+    {
+      "Unique Name": "K216204",
+      "Width": 216,
+      "Height": 204,
+      "DW": "FALSE",
+      "Granite": 94.4,
+      "Casework": 276
+    },
+    {
+      "Unique Name": "K216192",
+      "Width": 216,
+      "Height": 192,
+      "DW": "FALSE",
+      "Granite": 87.2,
+      "Casework": 252
+    },
+    {
+      "Unique Name": "K216180",
+      "Width": 216,
+      "Height": 180,
+      "DW": "TRUE",
+      "Granite": 80.38,
+      "Casework": 222
+    },
+    {
+      "Unique Name": "K216168",
+      "Width": 216,
+      "Height": 168,
+      "DW": "TRUE",
+      "Granite": 74.64,
+      "Casework": 204
+    },
+    {
+      "Unique Name": "K216156",
+      "Width": 216,
+      "Height": 156,
+      "DW": "TRUE",
+      "Granite": 67.33,
+      "Casework": 177
+    },
+    {
+      "Unique Name": "K216144",
+      "Width": 216,
+      "Height": 144,
+      "DW": "TRUE",
+      "Granite": 65.28,
+      "Casework": 153
+    },
+    {
+      "Unique Name": "K216141",
+      "Width": 216,
+      "Height": 141,
+      "DW": "TRUE",
+      "Granite": 63.38,
+      "Casework": 171
+    },
+    {
+      "Unique Name": "K216129",
+      "Width": 216,
+      "Height": 129,
+      "DW": "TRUE",
+      "Granite": 56.1446,
+      "Casework": 147
     }
   ],
   "Bathroom": [
