@@ -37,21 +37,34 @@ const UnitPlan = ({ unitPlan, constraints }) => {
         ))}
       </svg>
       {unitPlan.images.map((i) => (
-          <img
-		  viewBox={`0 0 ${i.rect.w} ${i.rect.h}`}
-		  width = {Math.round(scale * i.rect.w * 0.1)}
-		  height = {Math.round(scale * i.rect.h * 0.1)}
+          <div
 		  style={
 			  {
 				  position:"absolute",
+				  "background-color":"rgba(0, 1, 0, 0.4)",
 				  left:offset_x + Math.round(scale * i.rect.x)+"px",
-				  top:offset_y + Math.round(scale * i.rect.y)+"px"
+				  top:offset_y + Math.round(scale * i.rect.y)+"px",
+				  width:Math.round(scale * i.rect.w)+"px",
+				  height:Math.round(scale * i.rect.h)+"px"
 			  }
-		  } src={`./assets/Unit Parts_${i.id}.svg`} />
+		  } ></div>
         ))}
     </div>
     </div>
   );
 };
+      // {unitPlan.images.map((i) => (
+      //     <img
+		  // viewBox={`0 0 ${i.rect.w} ${i.rect.h}`}
+		  // width = {Math.round(scale * i.rect.w)}
+		  // height = {Math.round(scale * i.rect.h)}
+		  // style={
+			  // {
+				  // position:"absolute",
+				  // left:offset_x + Math.round(scale * i.rect.x)+"px",
+				  // top:offset_y + Math.round(scale * i.rect.y)+"px"
+			  // }
+		  // } src={`./assets/Unit Parts_${i.id}.svg`} />
+      //   ))}
 
 export default UnitPlan;
