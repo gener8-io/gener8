@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { Card, Button, Row, Col, Select, Typography, Switch } from "antd";
+import React, { useState } from "react";
+import { Button, Col, Card, Switch, Row, Select, Typography } from "antd";
 
 const { Option } = Select;
 const { Title } = Typography;
@@ -7,27 +7,23 @@ const { Title } = Typography;
 const AnalysisType = ({ analysisTypes, setAnalysisTypes }) => {
   const [currentAnalysis, setCurrentAnalysis] = useState(null);
   return (
-    <div style={{ padding: 40 }}>
+    <div>
       <Row>
         <Title level={3}>Analysis Type</Title>
       </Row>
       <Row>
         <Col>
           <Select
-            defaultValue="circulation_area"
+            defaultValue="Bed Size"
             onChange={(value) => setCurrentAnalysis(value)}
           >
-            <Option value="circulation_area">Circulation Area</Option>
-            <Option value="bed_size">Bed Size</Option>
+            <Option value="Bed Size">Bed Size</Option>
           </Select>
         </Col>
         <Col>
           <Button
             onClick={() =>
-              setAnalysisTypes([
-                ...analysisTypes,
-                { key: currentAnalysis, label: "" },
-              ])
+              setAnalysisTypes([...analysisTypes, currentAnalysis])
             }
           >
             Add
@@ -35,9 +31,7 @@ const AnalysisType = ({ analysisTypes, setAnalysisTypes }) => {
         </Col>
       </Row>
       {analysisTypes.map((at) => (
-        <Card>
-          {at.label} <Switch></Switch>
-        </Card>
+        <Card>{at}</Card>
       ))}
     </div>
   );

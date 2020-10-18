@@ -1,9 +1,11 @@
-
 import React, { useState } from "react";
 import { Row, Col } from "antd";
 import { AnalysisType } from "./AnalysisTypes";
 import Constraints from "./Constraints";
-import {Room} from './Room';
+
+import {SvgLoader} from "./svgLoader";
+
+
 import "./App.less";
 
 const App = () => {
@@ -21,6 +23,7 @@ const App = () => {
       </Col>
       <Col span={8}>
         <div>Gallery</div>
+        <SvgLoader/>
       </Col>
       <Col span={8}>
         <Constraints
@@ -28,7 +31,7 @@ const App = () => {
           setConstraints={setConstraints}
         />
       </Col>
-      <Room posx={1} posy={1}/>
+    
     </Row>
   );
 };
