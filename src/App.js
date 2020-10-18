@@ -77,12 +77,25 @@ const App = () => {
           loading={generating}
           onClick={() => {
             setGenerating(true);
+            setGenerated(true);
             workerInstance.calculatePrimes(500, 1000000000);
           }}
           block
           type="primary"
         >
           Generate
+        </Button>
+        <br />
+        <Button
+          onClick={() => {
+            setGenerated(true);
+            setGenerating(false);
+            workerInstance.turnOff();
+          }}
+          block
+          danger
+        >
+          Reset
         </Button>
         <br />
         {generating || generated ? (
