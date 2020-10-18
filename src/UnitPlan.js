@@ -6,7 +6,7 @@ const { Title } = Typography;
 
 const UnitPlan = ({ unitPlan }) => (
   <div>
-    <Title level={3}>Unit Plan</Title>
+    <Title style={{textAlign: "center"}} level={3}>Unit Plan</Title>
     <svg viewBox="-100 -100 2500 2500">
       {unitPlan.map((r) => (
         <Fragment key={r.label}>

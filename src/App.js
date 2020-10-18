@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Typography } from "antd";
 import { LineChart } from "react-chartkick";
 import "chart.js";
 import Constraints from "./Constraints";
@@ -80,7 +80,7 @@ const App = () => {
   //const computeUnitPlans = (bedSize)
 
   return (
-    <Row style={{ margin: 30 }}>
+    <Row style={{ padding: 30 }}>
       <Col span={6}>
         <Constraints
           setGenerating={setGenerating}
@@ -110,7 +110,7 @@ const App = () => {
             src={process.env.PUBLIC_URL + "/assets/Logo.gif"}
             alt="logo"
           />
-          Gener8.io
+          <Typography.Title level={4}>gener8.io</Typography.Title>
         </Row>
       </Col>
     </Row>
