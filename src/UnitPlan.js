@@ -19,13 +19,13 @@ const UnitPlan = ({ unitPlan, constraints }) => {
 	  }}>
 	  <svg 
 		  viewBox={`0 0 ${constraints.unitX} ${constraints.unitY}`}
+		  width = {Math.round(scale * constraints.unitX)}
+		  height = {Math.round(scale * constraints.unitY)}
 		  style={
 			  {
 				  position:"absolute",
 				  left:offset_x+"px",
 				  top:offset_y+"px",
-				  width:Math.round(scale * constraints.unitX)+"px",
-				  height:Math.round(scale * constraints.unitY)+"px"
 			  }
 	  }
       >
@@ -39,13 +39,13 @@ const UnitPlan = ({ unitPlan, constraints }) => {
       {unitPlan.images.map((i) => (
           <img
 		  viewBox={`0 0 ${i.rect.w} ${i.rect.h}`}
+		  width = {Math.round(scale * i.rect.w * 0.1)}
+		  height = {Math.round(scale * i.rect.h * 0.1)}
 		  style={
 			  {
 				  position:"absolute",
-				  left:offset_x + Math.round(scale * i.rect.x - Math.round(scale * i.rect.w))+"px",
-				  top:offset_y + Math.round(scale * i.rect.y - Math.round(scale * i.rect.h))+"px",
-				  width:Math.round(scale * i.rect.w * 0.5)+"px",
-				  height:Math.round(scale * i.rect.h * 0.5)+"px"
+				  left:offset_x + Math.round(scale * i.rect.x)+"px",
+				  top:offset_y + Math.round(scale * i.rect.y)+"px"
 			  }
 		  } src={`./assets/Unit Parts_${i.id}.svg`} />
         ))}
