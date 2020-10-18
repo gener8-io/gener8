@@ -78,7 +78,7 @@ const App = () => {
           onClick={() => {
             setGenerating(true);
             setGenerated(true);
-            workerInstance.calculatePrimes(500, 1000000000);
+            workerInstance.calculateUnitPlan(constraints);
           }}
           block
           type="primary"

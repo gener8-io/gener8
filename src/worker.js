@@ -1399,7 +1399,9 @@ export const turnOff = () => {
 	clearInterval(intervalId);
 }
 
-export const calculatePrimes = (iterations, multiplier) => {
+export const calculateUnitPlan = (constraints) => {
+	unit.w = constraints.unitX;
+	unit.h = constraints.unitY;
 	init_links()
 	link_rooms("Living", "Bedroom");
 	link_rooms("Bathroom", "Kitchen");
