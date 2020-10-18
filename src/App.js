@@ -15,7 +15,7 @@ const App = () => {
 
   const [introOpen, setIntroOpen] = useState(true);
   const [generating, setGenerating] = useState(false);
-  const [generated] = useState(false);
+  const [generated, setGenerated] = useState(false);
   const [constraints, setConstraints] = useState({
     unitX: 240,
     unitY: 320,
@@ -73,8 +73,19 @@ const App = () => {
 
   useEffect(() => {
     workerInstance.addEventListener("message", (message) => {
-      console.log(message.data);
-    });
+
+		if (message.data.end)
+		{
+			setGenerated(true);
+			setGenerating(false);
+		}
+		else
+		{
+			console.log(message.data);
+			if (message.data.map)
+				setUnitPlan(message.data);
+		}
+	});
   });
 
   return (
