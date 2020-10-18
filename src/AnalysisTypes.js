@@ -37,4 +37,4 @@ const AnalysisType = ({ analysisTypes, setAnalysisTypes }) => {
   );
 };
 
-export { AnalysisType };
+export default AnalysisType;
