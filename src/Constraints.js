@@ -16,7 +16,6 @@ const Constraints = ({
         </Col>
         <Col>
           <InputNumber
-            defaultValue={240}
             value={constraints.unitX}
             onChange={(value) =>
               setConstraints((prevState) => {
@@ -33,7 +32,6 @@ const Constraints = ({
         </Col>
         <Col>
           <InputNumber
-            defaultValue={240}
             value={constraints.unitY}
             onChange={(value) =>
               setConstraints((prevState) => {
@@ -45,7 +43,6 @@ const Constraints = ({
       </Row>
       <Text>Bed Size: </Text>
       <Slider
-        defaultValue={50}
         value={constraints.bedSize * 100}
         onChange={(value) =>
           setConstraints((prevState) => {
@@ -55,11 +52,46 @@ const Constraints = ({
       />
       <Text>Bedroom Circulation Area: </Text>
       <Slider
-        defaultValue={50}
-        value={constraints.circulation * 100}
+        value={constraints.bedroomCirculationArea * 100}
         onChange={(value) =>
           setConstraints((prevState) => {
-            return { ...prevState, circulation: value / 100 };
+            return { ...prevState, bedroomCirculationArea: value / 100 };
+          })
+        }
+      />
+      <Text>Vanity Size: </Text>
+      <Slider
+        value={constraints.vanityScore * 100}
+        onChange={(value) =>
+          setConstraints((prevState) => {
+            return { ...prevState, vanityScore: value / 100 };
+          })
+        }
+      />
+      <Text>Bathroom Circulation Area: </Text>
+      <Slider
+        value={constraints.bathroomCirculationArea * 100}
+        onChange={(value) =>
+          setConstraints((prevState) => {
+            return { ...prevState, bathroomCirculationArea: value / 100 };
+          })
+        }
+      />
+      <Text>Living Circulation Area: </Text>
+      <Slider
+        value={constraints.livingTargetArea * 100}
+        onChange={(value) =>
+          setConstraints((prevState) => {
+            return { ...prevState, livingTargetArea: value / 100 };
+          })
+        }
+      />
+      <Text>Closet Circulation Area: </Text>
+      <Slider
+        value={constraints.closetTargetArea * 100}
+        onChange={(value) =>
+          setConstraints((prevState) => {
+            return { ...prevState, closetTargetArea: value / 100 };
           })
         }
       />

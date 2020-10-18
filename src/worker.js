@@ -471,12 +471,12 @@ var max_slns = 100;
 var unit = { w: 150, h: 100 };
 var links = [];
 var room_types = [
-	{ name: "Bedroom", weights: { bedSize: 0.2, circulation: 0.2 } },
+	{ name: "Bedroom", weights: { "Bed Score": 0.2, "Circulation Area": 0.2 } },
 	{ name: "Living", weights: { target_area: 0.25 } },
 	{ name: "Closet", weights: { target_area: 0.1 } },
   
 	{ name: "Kitchen", weights: { target_area: 0.3 } },
-	{ name: "Bathroom", weights: { VanitySize: 0.2, circulation: 0.15 } },
+	{ name: "Bathroom", weights: { "Vanity Score": 0.2, "Circulation Area": 0.15 } },
   ];
 
 function init_links()
@@ -1407,6 +1407,14 @@ export const turnOff = () => {
 export const calculateUnitPlan = (constraints) => {
 	unit.w = constraints.unitX;
 	unit.h = constraints.unitY;
+	room_types["Bedroom"].weights["Bed Score"] = constraints.bedSize
+	room_types["Bedroom"].weights["Circulation Area"] = constraints.bedroomCirculationArea
+	room_types["Living"].weights.target_area = constraints.livingTargetArea
+	room_types["Closet"].weights.target_area = constraints.closetTargetArea
+	room_types["Kitchen"].weights.target_area = constraints.kitchenTargetArea
+	room_types["Bathroom"].weights["Vanity Scor"] = constraints.vanityScore
+	room_types["Bathroom"].weights["Circulation Area"] = constraints.bathroomCirculationArea
+
 	init_links()
 	link_rooms("Living", "Bedroom");
 	link_rooms("Bathroom", "Kitchen");
@@ -1424,7 +1432,7 @@ export const calculateUnitPlan = (constraints) => {
 		}
 		if (!improved)
 		{
-			time_since_last_improvement += 200;
+			time_since_last_improvement += 100;
 		}
 		else
 		{
@@ -1442,5 +1450,5 @@ export const calculateUnitPlan = (constraints) => {
 			postMessage({end:true});
 			clearInterval(intervalId);
 		}
-	}, 500);
+	}, 100);
 }

@@ -20,7 +20,12 @@ const App = () => {
     unitX: 240,
     unitY: 320,
     bedSize: 0.7,
-    circulation: 0.5,
+    bedroomCirculationArea: 0.5,
+    vanityScore: 0.5,
+    bathroomCirculationArea: 0.3,
+    kitchenTargetArea: 0.1,
+    closetTargetArea: 0.1,
+    livingTargetArea: 0.4
   });
 
   const [unitPlan, setUnitPlan] = useState({
@@ -95,7 +100,7 @@ const App = () => {
           block
           danger
         >
-          Reset
+          Alternative Solutions
         </Button>
         <br />
         {generating || generated ? (
