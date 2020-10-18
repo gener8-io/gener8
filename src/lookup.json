@@ -1,589 +1,377 @@
 {
-  "caseTypes": [
-    [
-      {
-        "Unique Name": "CASE39204",
-        "Width": 39,
-        "Height": 204,
-        "Casework": 198,
-        "Granite_Area": 21.5
-      },
-      {
-        "Unique Name": "CASE39192",
-        "Width": 39,
-        "Height": 192,
-        "Casework": 186,
-        "Granite_Area": 19.5
-      },
-      {
-        "Unique Name": "CASE39180",
-        "Width": 39,
-        "Height": 180,
-        "Casework": 174,
-        "Granite_Area": 17.88
-      },
-      {
-        "Unique Name": "CASE39168",
-        "Width": 39,
-        "Height": 168,
-        "Casework": 162,
-        "Granite_Area": 17.35
-      },
-      {
-        "Unique Name": "CASE39156",
-        "Width": 39,
-        "Height": 156,
-        "Casework": 150,
-        "Granite_Area": 15.25
-      },
-      {
-        "Unique Name": "CASE39144",
-        "Width": 39,
-        "Height": 144,
-        "Casework": 138,
-        "Granite_Area": 18.41
-      },
-      {
-        "Unique Name": "CASE39141",
-        "Width": 39,
-        "Height": 141,
-        "Casework": 135,
-        "Granite_Area": 17.88
-      },
-      {
-        "Unique Name": "CASE39129",
-        "Width": 39,
-        "Height": 129,
-        "Casework": 123,
-        "Granite_Area": 15.78
-      }
-    ]
+  "Kitchen": [
+    {
+      "Unique Name": "K66204",
+      "Width": 66,
+      "Height": 204,
+      "Casework": 78,
+      "DW": false
+    },
+    {
+      "Unique Name": "K66192",
+      "Width": 66,
+      "Height": 192,
+      "Casework": 66,
+      "DW": false
+    },
+    {
+      "Unique Name": "K66180",
+      "Width": 66,
+      "Height": 180,
+      "Casework": 48,
+      "DW": true
+    },
+    {
+      "Unique Name": "K66168",
+      "Width": 66,
+      "Height": 168,
+      "Casework": 42,
+      "DW": true
+    },
+    {
+      "Unique Name": "K66156",
+      "Width": 66,
+      "Height": 156,
+      "Casework": 27,
+      "DW": true
+    },
+    {
+      "Unique Name": "K66144",
+      "Width": 66,
+      "Height": 144,
+      "Casework": 15,
+      "DW": true
+    },
+    {
+      "Unique Name": "K66141",
+      "Width": 66,
+      "Height": 141,
+      "Casework": 36,
+      "DW": true
+    },
+    {
+      "Unique Name": "K66129",
+      "Width": 66,
+      "Height": 129,
+      "Casework": 24,
+      "DW": true
+    }
   ],
-  "islands": [
-    [
-      {
-        "Unique Name": "I75204",
-        "Width": 75,
-        "Height": 204,
-        "Granite_Area": 45
-      },
-      {
-        "Unique Name": "I75192",
-        "Width": 75,
-        "Height": 192,
-        "Granite_Area": 42
-      },
-      {
-        "Unique Name": "I75180",
-        "Width": 75,
-        "Height": 180,
-        "Granite_Area": 38.5
-      },
-      {
-        "Unique Name": "I75168",
-        "Width": 75,
-        "Height": 168,
-        "Granite_Area": 35.25
-      },
-      {
-        "Unique Name": "I75156",
-        "Width": 75,
-        "Height": 156,
-        "Granite_Area": 32.08
-      },
-      {
-        "Unique Name": "I75144",
-        "Width": 75,
-        "Height": 144,
-        "Granite_Area": 28.87
-      },
-      {
-        "Unique Name": "I75141",
-        "Width": 75,
-        "Height": 141,
-        "Granite_Area": 28.07
-      },
-      {
-        "Unique Name": "I75129",
-        "Width": 75,
-        "Height": 129,
-        "Granite_Area": 24.86
-      },
-      {
-        "Unique Name": "I87204",
-        "Width": 87,
-        "Height": 204,
-        "Granite_Area": 59
-      },
-      {
-        "Unique Name": "I87192",
-        "Width": 87,
-        "Height": 192,
-        "Granite_Area": 55
-      },
-      {
-        "Unique Name": "I87180",
-        "Width": 87,
-        "Height": 180,
-        "Granite_Area": 50.5
-      },
-      {
-        "Unique Name": "I87168",
-        "Width": 87,
-        "Height": 168,
-        "Granite_Area": 46.29
-      },
-      {
-        "Unique Name": "I87156",
-        "Width": 87,
-        "Height": 156,
-        "Granite_Area": 42.08
-      },
-      {
-        "Unique Name": "I87144",
-        "Width": 87,
-        "Height": 144,
-        "Granite_Area": 37.875
-      },
-      {
-        "Unique Name": "I87141",
-        "Width": 87,
-        "Height": 141,
-        "Granite_Area": 36.82
-      },
-      {
-        "Unique Name": "I87129",
-        "Width": 87,
-        "Height": 129,
-        "Granite_Area": 32.61
-      },
-      {
-        "Unique Name": "I111204",
-        "Width": 111,
-        "Height": 204,
-        "Granite_Area": 72.9
-      },
-      {
-        "Unique Name": "I111192",
-        "Width": 111,
-        "Height": 192,
-        "Granite_Area": 67.7
-      },
-      {
-        "Unique Name": "I111180",
-        "Width": 111,
-        "Height": 180,
-        "Granite_Area": 62.5
-      },
-      {
-        "Unique Name": "I111168",
-        "Width": 111,
-        "Height": 168,
-        "Granite_Area": 57.29
-      },
-      {
-        "Unique Name": "I111156",
-        "Width": 111,
-        "Height": 156,
-        "Granite_Area": 52.08
-      },
-      {
-        "Unique Name": "I111144",
-        "Width": 111,
-        "Height": 144,
-        "Granite_Area": 46.87
-      },
-      {
-        "Unique Name": "I111141",
-        "Width": 111,
-        "Height": 141,
-        "Granite_Area": 45.5
-      },
-      {
-        "Unique Name": "I111129",
-        "Width": 111,
-        "Height": 129,
-        "Granite_Area": 40.3646
-      }
-    ]
+  "Bathroom": [
+    {
+      "Unique Name": "S6095",
+      "Width": 60,
+      "Height": 95,
+      "Circulation Area": 17.1055,
+      "Vanity Score": 0.1,
+      "Casework": 0
+    },
+    {
+      "Unique Name": "S7295",
+      "Width": 72,
+      "Height": 95,
+      "Circulation Area": 22.5,
+      "Vanity Score": 0.1,
+      "Casework": 0
+    },
+    {
+      "Unique Name": "S7895",
+      "Width": 78,
+      "Height": 95,
+      "Circulation Area": 25.26,
+      "Vanity Score": 0.1,
+      "Casework": 0
+    },
+    {
+      "Unique Name": "S60107",
+      "Width": 60,
+      "Height": 107,
+      "Circulation Area": 20.25,
+      "Vanity Score": 0.1,
+      "Casework": 12
+    },
+    {
+      "Unique Name": "S72107",
+      "Width": 72,
+      "Height": 107,
+      "Circulation Area": 26.68,
+      "Vanity Score": 0.1,
+      "Casework": 12
+    },
+    {
+      "Unique Name": "S78107",
+      "Width": 78,
+      "Height": 107,
+      "Circulation Area": 29.9,
+      "Vanity Score": 0.1,
+      "Casework": 12
+    },
+    {
+      "Unique Name": "S60119",
+      "Width": 60,
+      "Height": 119,
+      "Circulation Area": 23.39,
+      "Vanity Score": 0.1,
+      "Casework": 24
+    },
+    {
+      "Unique Name": "S72119",
+      "Width": 72,
+      "Height": 119,
+      "Circulation Area": 30.83,
+      "Vanity Score": 0.1,
+      "Casework": 24
+    },
+    {
+      "Unique Name": "S78119",
+      "Width": 78,
+      "Height": 119,
+      "Circulation Area": 34.55,
+      "Vanity Score": 0.1,
+      "Casework": 24
+    },
+    {
+      "Unique Name": "S60131",
+      "Width": 60,
+      "Height": 131,
+      "Circulation Area": 26.54,
+      "Vanity Score": 0.1,
+      "Casework": 36
+    },
+    {
+      "Unique Name": "S72131",
+      "Width": 72,
+      "Height": 131,
+      "Circulation Area": 34.98,
+      "Vanity Score": 0.1,
+      "Casework": 36
+    },
+    {
+      "Unique Name": "S78131",
+      "Width": 78,
+      "Height": 131,
+      "Circulation Area": 39.19,
+      "Vanity Score": 0.1,
+      "Casework": 36
+    },
+    {
+      "Unique Name": "D60131",
+      "Width": 60,
+      "Height": 131,
+      "Circulation Area": 26.54,
+      "Vanity Score": 0.9,
+      "Casework": 0
+    },
+    {
+      "Unique Name": "D72131",
+      "Width": 72,
+      "Height": 131,
+      "Circulation Area": 34.98,
+      "Vanity Score": 0.9,
+      "Casework": 0
+    },
+    {
+      "Unique Name": "D78131",
+      "Width": 78,
+      "Height": 131,
+      "Circulation Area": 39.19,
+      "Vanity Score": 0.9,
+      "Casework": 0
+    },
+    {
+      "Unique Name": "S60143",
+      "Width": 60,
+      "Height": 143,
+      "Circulation Area": 29.68,
+      "Vanity Score": 0.1,
+      "Casework": 48
+    },
+    {
+      "Unique Name": "S72143",
+      "Width": 72,
+      "Height": 143,
+      "Circulation Area": 39.12,
+      "Vanity Score": 0.1,
+      "Casework": 48
+    },
+    {
+      "Unique Name": "S78143",
+      "Width": 78,
+      "Height": 143,
+      "Circulation Area": 43.85,
+      "Vanity Score": 0.1,
+      "Casework": 48
+    },
+    {
+      "Unique Name": "D60143",
+      "Width": 60,
+      "Height": 143,
+      "Circulation Area": 29.68,
+      "Vanity Score": 0.9,
+      "Casework": 12
+    },
+    {
+      "Unique Name": "D72143",
+      "Width": 72,
+      "Height": 143,
+      "Circulation Area": 39.12,
+      "Vanity Score": 0.9,
+      "Casework": 12
+    },
+    {
+      "Unique Name": "D78143",
+      "Width": 78,
+      "Height": 143,
+      "Circulation Area": 43.85,
+      "Vanity Score": 0.9,
+      "Casework": 12
+    },
+    {
+      "Unique Name": "S60155",
+      "Width": 60,
+      "Height": 155,
+      "Circulation Area": 32.83,
+      "Vanity Score": 0.1,
+      "Casework": 60
+    },
+    {
+      "Unique Name": "S72155",
+      "Width": 72,
+      "Height": 155,
+      "Circulation Area": 43.21,
+      "Vanity Score": 0.1,
+      "Casework": 60
+    },
+    {
+      "Unique Name": "S78155",
+      "Width": 78,
+      "Height": 155,
+      "Circulation Area": 49.49,
+      "Vanity Score": 0.1,
+      "Casework": 60
+    },
+    {
+      "Unique Name": "D60155",
+      "Width": 60,
+      "Height": 155,
+      "Circulation Area": 32.83,
+      "Vanity Score": 0.9,
+      "Casework": 24
+    },
+    {
+      "Unique Name": "D72155",
+      "Width": 72,
+      "Height": 155,
+      "Circulation Area": 43.21,
+      "Vanity Score": 0.9,
+      "Casework": 24
+    },
+    {
+      "Unique Name": "D78155",
+      "Width": 78,
+      "Height": 155,
+      "Circulation Area": 49.49,
+      "Vanity Score": 0.9,
+      "Casework": 24
+    },
+    {
+      "Unique Name": "S60167",
+      "Width": 60,
+      "Height": 167,
+      "Circulation Area": 32.83,
+      "Vanity Score": 0.1,
+      "Casework": 72
+    },
+    {
+      "Unique Name": "S72167",
+      "Width": 72,
+      "Height": 167,
+      "Circulation Area": 43.21,
+      "Vanity Score": 0.1,
+      "Casework": 72
+    },
+    {
+      "Unique Name": "S78167",
+      "Width": 78,
+      "Height": 167,
+      "Circulation Area": 49.49,
+      "Vanity Score": 0.1,
+      "Casework": 72
+    },
+    {
+      "Unique Name": "D60167",
+      "Width": 60,
+      "Height": 167,
+      "Circulation Area": 32.83,
+      "Vanity Score": 0.9,
+      "Casework": 42
+    },
+    {
+      "Unique Name": "D72167",
+      "Width": 72,
+      "Height": 167,
+      "Circulation Area": 43.21,
+      "Vanity Score": 0.9,
+      "Casework": 42
+    },
+    {
+      "Unique Name": "D78167",
+      "Width": 78,
+      "Height": 167,
+      "Circulation Area": 49.49,
+      "Vanity Score": 0.9,
+      "Casework": 42
+    },
+    {
+      "Unique Name": "S60179",
+      "Width": 60,
+      "Height": 179,
+      "Circulation Area": 35.9,
+      "Vanity Score": 0.1,
+      "Casework": 84
+    },
+    {
+      "Unique Name": "S72179",
+      "Width": 72,
+      "Height": 179,
+      "Circulation Area": 47.4,
+      "Vanity Score": 0.1,
+      "Casework": 84
+    },
+    {
+      "Unique Name": "S78179",
+      "Width": 78,
+      "Height": 179,
+      "Circulation Area": 53.1,
+      "Vanity Score": 0.1,
+      "Casework": 84
+    },
+    {
+      "Unique Name": "D60179",
+      "Width": 60,
+      "Height": 179,
+      "Circulation Area": 35.9,
+      "Vanity Score": 0.9,
+      "Casework": 54
+    },
+    {
+      "Unique Name": "D72179",
+      "Width": 72,
+      "Height": 179,
+      "Circulation Area": 47.4,
+      "Vanity Score": 0.9,
+      "Casework": 54
+    },
+    {
+      "Unique Name": "D78179",
+      "Width": 78,
+      "Height": 179,
+      "Circulation Area": 53.1,
+      "Vanity Score": 0.9,
+      "Casework": 54
+    }
   ],
-  "kitchens": [
-    [
-      {
-        "Unique Name": "K66204",
-        "Width": 66,
-        "Height": 204,
-        "Casework": 78,
-        "DW": false
-      },
-      {
-        "Unique Name": "K66192",
-        "Width": 66,
-        "Height": 192,
-        "Casework": 66,
-        "DW": false
-      },
-      {
-        "Unique Name": "K66180",
-        "Width": 66,
-        "Height": 180,
-        "Casework": 48,
-        "DW": true
-      },
-      {
-        "Unique Name": "K66168",
-        "Width": 66,
-        "Height": 168,
-        "Casework": 42,
-        "DW": true
-      },
-      {
-        "Unique Name": "K66156",
-        "Width": 66,
-        "Height": 156,
-        "Casework": 27,
-        "DW": true
-      },
-      {
-        "Unique Name": "K66144",
-        "Width": 66,
-        "Height": 144,
-        "Casework": 15,
-        "DW": true
-      },
-      {
-        "Unique Name": "K66141",
-        "Width": 66,
-        "Height": 141,
-        "Casework": 36,
-        "DW": true
-      },
-      {
-        "Unique Name": "K66129",
-        "Width": 66,
-        "Height": 129,
-        "Casework": 24,
-        "DW": true
-      }
-    ]
-  ],
-  "baths": [
-    [
-      {
-        "Unique Name": "S6095",
-        "Width": 60,
-        "Height": 95,
-        "Circulation Area": 17.1055,
-        "Vanity Score": 0.1,
-        "Casework": 0
-      },
-      {
-        "Unique Name": "S7295",
-        "Width": 72,
-        "Height": 95,
-        "Circulation Area": 22.5,
-        "Vanity Score": 0.1,
-        "Casework": 0
-      },
-      {
-        "Unique Name": "S7895",
-        "Width": 78,
-        "Height": 95,
-        "Circulation Area": 25.26,
-        "Vanity Score": 0.1,
-        "Casework": 0
-      },
-      {
-        "Unique Name": "S60107",
-        "Width": 60,
-        "Height": 107,
-        "Circulation Area": 20.25,
-        "Vanity Score": 0.1,
-        "Casework": 12
-      },
-      {
-        "Unique Name": "S72107",
-        "Width": 72,
-        "Height": 107,
-        "Circulation Area": 26.68,
-        "Vanity Score": 0.1,
-        "Casework": 12
-      },
-      {
-        "Unique Name": "S78107",
-        "Width": 78,
-        "Height": 107,
-        "Circulation Area": 29.9,
-        "Vanity Score": 0.1,
-        "Casework": 12
-      },
-      {
-        "Unique Name": "S60119",
-        "Width": 60,
-        "Height": 119,
-        "Circulation Area": 23.39,
-        "Vanity Score": 0.1,
-        "Casework": 24
-      },
-      {
-        "Unique Name": "S72119",
-        "Width": 72,
-        "Height": 119,
-        "Circulation Area": 30.83,
-        "Vanity Score": 0.1,
-        "Casework": 24
-      },
-      {
-        "Unique Name": "S78119",
-        "Width": 78,
-        "Height": 119,
-        "Circulation Area": 34.55,
-        "Vanity Score": 0.1,
-        "Casework": 24
-      },
-      {
-        "Unique Name": "S60131",
-        "Width": 60,
-        "Height": 131,
-        "Circulation Area": 26.54,
-        "Vanity Score": 0.1,
-        "Casework": 36
-      },
-      {
-        "Unique Name": "S72131",
-        "Width": 72,
-        "Height": 131,
-        "Circulation Area": 34.98,
-        "Vanity Score": 0.1,
-        "Casework": 36
-      },
-      {
-        "Unique Name": "S78131",
-        "Width": 78,
-        "Height": 131,
-        "Circulation Area": 39.19,
-        "Vanity Score": 0.1,
-        "Casework": 36
-      },
-      {
-        "Unique Name": "D60131",
-        "Width": 60,
-        "Height": 131,
-        "Circulation Area": 26.54,
-        "Vanity Score": 0.9,
-        "Casework": 0
-      },
-      {
-        "Unique Name": "D72131",
-        "Width": 72,
-        "Height": 131,
-        "Circulation Area": 34.98,
-        "Vanity Score": 0.9,
-        "Casework": 0
-      },
-      {
-        "Unique Name": "D78131",
-        "Width": 78,
-        "Height": 131,
-        "Circulation Area": 39.19,
-        "Vanity Score": 0.9,
-        "Casework": 0
-      },
-      {
-        "Unique Name": "S60143",
-        "Width": 60,
-        "Height": 143,
-        "Circulation Area": 29.68,
-        "Vanity Score": 0.1,
-        "Casework": 48
-      },
-      {
-        "Unique Name": "S72143",
-        "Width": 72,
-        "Height": 143,
-        "Circulation Area": 39.12,
-        "Vanity Score": 0.1,
-        "Casework": 48
-      },
-      {
-        "Unique Name": "S78143",
-        "Width": 78,
-        "Height": 143,
-        "Circulation Area": 43.85,
-        "Vanity Score": 0.1,
-        "Casework": 48
-      },
-      {
-        "Unique Name": "D60143",
-        "Width": 60,
-        "Height": 143,
-        "Circulation Area": 29.68,
-        "Vanity Score": 0.9,
-        "Casework": 12
-      },
-      {
-        "Unique Name": "D72143",
-        "Width": 72,
-        "Height": 143,
-        "Circulation Area": 39.12,
-        "Vanity Score": 0.9,
-        "Casework": 12
-      },
-      {
-        "Unique Name": "D78143",
-        "Width": 78,
-        "Height": 143,
-        "Circulation Area": 43.85,
-        "Vanity Score": 0.9,
-        "Casework": 12
-      },
-      {
-        "Unique Name": "S60155",
-        "Width": 60,
-        "Height": 155,
-        "Circulation Area": 32.83,
-        "Vanity Score": 0.1,
-        "Casework": 60
-      },
-      {
-        "Unique Name": "S72155",
-        "Width": 72,
-        "Height": 155,
-        "Circulation Area": 43.21,
-        "Vanity Score": 0.1,
-        "Casework": 60
-      },
-      {
-        "Unique Name": "S78155",
-        "Width": 78,
-        "Height": 155,
-        "Circulation Area": 49.49,
-        "Vanity Score": 0.1,
-        "Casework": 60
-      },
-      {
-        "Unique Name": "D60155",
-        "Width": 60,
-        "Height": 155,
-        "Circulation Area": 32.83,
-        "Vanity Score": 0.9,
-        "Casework": 24
-      },
-      {
-        "Unique Name": "D72155",
-        "Width": 72,
-        "Height": 155,
-        "Circulation Area": 43.21,
-        "Vanity Score": 0.9,
-        "Casework": 24
-      },
-      {
-        "Unique Name": "D78155",
-        "Width": 78,
-        "Height": 155,
-        "Circulation Area": 49.49,
-        "Vanity Score": 0.9,
-        "Casework": 24
-      },
-      {
-        "Unique Name": "S60167",
-        "Width": 60,
-        "Height": 167,
-        "Circulation Area": 32.83,
-        "Vanity Score": 0.1,
-        "Casework": 72
-      },
-      {
-        "Unique Name": "S72167",
-        "Width": 72,
-        "Height": 167,
-        "Circulation Area": 43.21,
-        "Vanity Score": 0.1,
-        "Casework": 72
-      },
-      {
-        "Unique Name": "S78167",
-        "Width": 78,
-        "Height": 167,
-        "Circulation Area": 49.49,
-        "Vanity Score": 0.1,
-        "Casework": 72
-      },
-      {
-        "Unique Name": "D60167",
-        "Width": 60,
-        "Height": 167,
-        "Circulation Area": 32.83,
-        "Vanity Score": 0.9,
-        "Casework": 42
-      },
-      {
-        "Unique Name": "D72167",
-        "Width": 72,
-        "Height": 167,
-        "Circulation Area": 43.21,
-        "Vanity Score": 0.9,
-        "Casework": 42
-      },
-      {
-        "Unique Name": "D78167",
-        "Width": 78,
-        "Height": 167,
-        "Circulation Area": 49.49,
-        "Vanity Score": 0.9,
-        "Casework": 42
-      },
-      {
-        "Unique Name": "S60179",
-        "Width": 60,
-        "Height": 179,
-        "Circulation Area": 35.9,
-        "Vanity Score": 0.1,
-        "Casework": 84
-      },
-      {
-        "Unique Name": "S72179",
-        "Width": 72,
-        "Height": 179,
-        "Circulation Area": 47.4,
-        "Vanity Score": 0.1,
-        "Casework": 84
-      },
-      {
-        "Unique Name": "S78179",
-        "Width": 78,
-        "Height": 179,
-        "Circulation Area": 53.1,
-        "Vanity Score": 0.1,
-        "Casework": 84
-      },
-      {
-        "Unique Name": "D60179",
-        "Width": 60,
-        "Height": 179,
-        "Circulation Area": 35.9,
-        "Vanity Score": 0.9,
-        "Casework": 54
-      },
-      {
-        "Unique Name": "D72179",
-        "Width": 72,
-        "Height": 179,
-        "Circulation Area": 47.4,
-        "Vanity Score": 0.9,
-        "Casework": 54
-      },
-      {
-        "Unique Name": "D78179",
-        "Width": 78,
-        "Height": 179,
-        "Circulation Area": 53.1,
-        "Vanity Score": 0.9,
-        "Casework": 54
-      }
-    ]
-  ],
-  "bedRooms": [
+  "Bedroom": [
     {
       "Unique Name": "Twin_A",
       "Width": 110,
