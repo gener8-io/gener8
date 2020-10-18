@@ -952,7 +952,7 @@ function grid_flood_fill(grid, room_type, y, x, neighborhoods)
 
 function grid_rect_expandable_up(grid, rect)
 {
-	var type = grid.points[y][x][0];
+	var type = grid.points[rect.y][rect.x][0];
 	var new_col = rect.y - 1;
 	for (var x = rect.x; x < rect.x + rect.w; ++x)
 	{
@@ -965,7 +965,7 @@ function grid_rect_expandable_up(grid, rect)
 
 function grid_rect_expandable_down(grid, rect)
 {
-	var type = grid.points[y][x][0];
+	var type = grid.points[rect.y][rect.x][0];
 	var new_col = rect.y + rect.h + 1;
 	for (var x = rect.x; x < rect.x + rect.w; ++x)
 	{
@@ -978,15 +978,56 @@ function grid_rect_expandable_down(grid, rect)
 
 function grid_rect_expandable_left(grid, rect)
 {
-	var type = grid.points[y][x][0];
+	var type = grid.points[rect.y][rect.x][0];
 	var new_row = rect.x + 1;
-	for (var y = rect.y; h < rect.y + rect.h; ++y)
+	for (var y = rect.y; y < rect.y + rect.h; ++y)
 	{
 		var value = grid_value(grid, y, new_row);
 		if (value != type)
 			return false;
 	}
 	return true;
+}
+
+function grid_rect_expandable_right(grid, rect)
+{
+	var type = grid.points[rect.y][rect.x][0];
+	var new_row = rect.x + rect.w + 1;
+	for (var y = rect.y; y < rect.y + rect.h; ++y)
+	{
+		var value = grid_value(grid, y, new_row);
+		if (value != type)
+			return false;
+	}
+	return true;
+}
+
+function grid_rect_rect(grid, x, y, w, h)
+{
+	var wcursor = 0.0;
+	var hcursor = 0.0;
+	var width = 0.0;
+	var height = 0.0;
+	for (var i = 0; i < x && i < grid.widths.length; ++i)
+	{
+		wcursor += grid.widths[i];
+	}
+	for (var i = 0; i < y && i < grid.heights.length; ++i)
+	{
+		hcursor += grid.heights[i];
+	}
+
+	for (var i = x; i <= x + w && i < grid.widths.length; ++i)
+	{
+		width += grid.widths[i];
+	}
+
+	for (var i = y; i <= y + h && i < grid.heights.length; ++i)
+	{
+		height += grid.heights[i];
+	}
+
+	return {x: wcursor, y: hcursor, w: width, h: height};
 }
 
 function grid_lr(grid, room_type)
@@ -997,10 +1038,8 @@ function grid_lr(grid, room_type)
 	{
 		for (var x = 0; x < grid.widths.length; ++x)
 		{
-			var cell = grid.points[y][x][0];
-			if (cell[0] == room_type)
+			if (grid.points[y][x][0] == room_type)
 			{
-				var rect = {x:x, y:y, w:1, h:1};
 				/* If it's expandable in every direction, it's not the lr */
 				if (   grid_value(grid, y, x + 1) == room_type
 				    && grid_value(grid, y, x - 1) == room_type
@@ -1008,6 +1047,7 @@ function grid_lr(grid, room_type)
 				    && grid_value(grid, y - 1, x) == room_type)
 					continue;
 
+				var rect = {x:x, y:y, w:1, h:1};
 				while (true) {
 					if (grid_rect_expandable_right(grid, rect))
 					{
@@ -1033,7 +1073,7 @@ function grid_lr(grid, room_type)
 					}
 					break;
 				}
-				var rect_real = grid_rect(grid, rect);
+				var rect_real = grid_rect_rect(grid, rect.x, rect.y, rect.w, rect.h);
 				if (!lr || lr_real.w * lr_real.h < rect_real.w * rect_real.h)
 				{
 					lr = rect;
@@ -1051,7 +1091,7 @@ function room_template(rect, room_type)
 	var fit = [];
 	if (!templates[room_types[room_type].name])
 		return fit;
-	var room_templates = templates[room_types[room_type].name][0];
+	var room_templates = templates[room_types[room_type].name];
 
 	for (var t in room_templates)
 	{
