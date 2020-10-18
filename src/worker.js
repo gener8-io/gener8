@@ -1120,13 +1120,13 @@ function grid_point_evaluate(grid, x, y, room_type, sln, debug)
 
 	var lr = grid_lr(grid, room_type);
 	var room_templates = room_template(lr, room_type);
-	if (room_templates > 0)
+	if (room_templates.length > 0)
 	{
 		sln.templates.push({rect: lr, id: room_templates[0]["Unique name"]});
 	}
 	else if (templates[room_types[room_type].name])
 	{
-		score -= 500;
+		score -= 100;
 	}
 
 	if (debug)
