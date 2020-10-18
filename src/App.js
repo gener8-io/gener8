@@ -68,8 +68,10 @@ const App = () => {
         <p>
           <Title>Welcome to gener8.io</Title>
         </p>
-        <p>Happy generating!</p>
+        <p>Gener8.io looks to remove barriers and make room configuration accessible through a simplified web-based application. Happy generating!</p>
+        <p>Check out our presentation on Google Sheets: <a href="https://docs.google.com/presentation/d/1aSb0UE_NfJQGtw_T_h3fjhpYV7GeO1gkFVIVjmxBxBg/edit?usp=sharing" target="_blank" rel="noopener noreferrer">here!</a></p>
         <p>v1 (10/18/2020)</p>
+
       </Modal>
       <Col span={6}>
         <Constraints
