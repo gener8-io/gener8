@@ -1201,7 +1201,7 @@ function grid_point_evaluate(grid, x, y, room_type, sln, debug)
 				if (debug)
 					console.log("missing link", room_types[room_type].name,
 						room_types[i].name);
-				score -= 500;
+				score -= 1000;
 			}
 		}
 	}
@@ -1237,7 +1237,7 @@ function room_evaluate(grid, room_type, sln, debug)
 			console.log("disconnected", room_types[room_type].name);
 		else if (debug)
 			console.log("missing", room_types[room_type].name);
-		score -= 1000.0;
+		score -= 10000.0;
 	}
 	return score;
 }
