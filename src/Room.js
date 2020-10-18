@@ -7,7 +7,7 @@ const Room = ({ label, coords }) => {
   const computeCentroid = () => {
     var first = coords[0],
       last = coords[coords.length - 1];
-    if (first.x != last.x || first.y != last.y) coords.push(first);
+    if (first.x !== last.x || first.y !== last.y) coords.push(first);
     var twicearea = 0,
       x = 0,
       y = 0,
