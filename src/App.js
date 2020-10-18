@@ -7,9 +7,12 @@ import UnitPlan from "./UnitPlan";
 import "./App.less";
 
 const App = () => {
-  //const appleWorker = new Worker("./worker.js");
+  const unitPlanWorker = new Worker("./worker.js");
 
+  const [counter, setCounter] = useState(1);
+  const [generate, setGenerate] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [generated, setGenerated] = useState(false);
   const [constraints, setConstraints] = useState({
     unitX: 240,
     unitY: 320,
@@ -66,36 +69,46 @@ const App = () => {
   ]);
 
   /*useEffect(() => {
-    appleWorker.onmessage = ($event) => {
-      if ($event && $event.data) {
-        //setCountApple($event.data);
-      }
-    };
-  }, [appleWorker]);*/
+
+    //setInterval(() => setUnitPlan(), 6000);
+  }, [generating]);
 
   useEffect(() => {
-    console.log(constraints);
-  }, [constraints]);
+    setTimeout(() => {
+      setGenerating(false);
+      setGenerated(true);
+    }, 6000);
+  }, [generated]); */
+
+  useEffect(() => {
+    unitPlanWorker.onmessage = ($event) => {
+      if ($event && $event.data) {
+        setUnitPlan($event.data);
+      }
+    };
+  }, [unitPlanWorker]);
 
   //const computeUnitPlans = (bedSize)
 
   return (
-    <Row style={{ padding: 30 }}>
+    <Row style={{ padding: 30 }} gutter={8}>
       <Col span={6}>
         <Constraints
+          generating={generating}
           setGenerating={setGenerating}
           constraints={constraints}
           setConstraints={setConstraints}
         />
         <br />
-        {generating && (
+        Count: {counter}
+        {generating || generated ? (
           <Row style={{ marginTop: 80 }}>
             <LineChart data={{ 1: 0, 2: 3, 3: 12 }} />
           </Row>
-        )}
+        ) : null}
       </Col>
       <Col span={15}>
-        {generating ? (
+        {generating || generated ? (
           <UnitPlan constraints={constraints} unitPlan={unitPlan} />
         ) : (
           <>Start gener8</>
